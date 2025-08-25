@@ -876,7 +876,7 @@ $(function () {
 
 
 
-// 法人確認画面
+// 法人登録確認画面
 $(function () {
     if(!$('#page-houjin_register').length) {
         return false;
@@ -895,9 +895,29 @@ $(function () {
             $('#houjin_register_link').addClass("is-disabled");
         }
     }
-
-
 });
+
+// ユーザー登録確認画面
+$(function () {
+    if(!$('#page-register').length) {
+        return false;
+    }
+
+    // 法人の同意チェック
+    usercheck();
+    $('#usercheck').on('change', function() {
+        usercheck();
+    });
+
+    function usercheck() {
+        if($('#usercheck').prop("checked")) {
+            $('#user_register_link').removeClass("is-disabled");
+        } else {
+            $('#user_register_link').addClass("is-disabled");
+        }
+    }
+});
+
 
 // 基本JSの関数
 $(function () {
