@@ -1,0 +1,107 @@
+<main class="mt-3">
+  {{ 'cart.css' | asset_url | stylesheet_tag }}
+  {{ 'form.css' | asset_url | stylesheet_tag }}
+  <div class="container-fluid px-0 page-content bg-white">
+      <div class="row no-gutters">
+          <div class="col">
+              <div class="container">
+                {% if cart.item_count == 0 %}
+                    <div class="text-center my-5">
+                        <h2 class="mb-5">カートに商品が入っていません</h2>
+                        <div class="row justify-content-center mb-2">
+                            <div class="col-md-3">
+                                <a href="/" class="btn btn-light btn-block">TOPページへ戻る</a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row mb-5">
+                        <div class="col">
+                            <div class="well">
+                                <i class="fas fa-info-circle"></i> 商品の合計金額は「<strong>{{ cart.total_price | money }}</strong>」です。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row order-list">
+                        <div class="col">
+                            <div class="d-none d-md-block">
+                                <div class="row order-list-header py-2 mb-3">
+                                    <div class="col-6 col-md-8 px-3">商品内容</div>
+                                    <div class="col col-md-2 text-center">数量</div>
+                                    <div class="col col-md-2 text-center">小計</div>
+                                </div>
+                            </div>
+                            {% for item in cart.items %}
+                            <div class="row order-list-item">
+                                <div class="col-12 col-md-8">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                    <img src="{{ item.image | image_url: width: 300 }}" class="img-fluid" alt="{{ item.product.title }}">
+                                    </div>
+                                    <div class="col-md-auto text-center text-md-left">
+                                    <strong>{{ item.product.title }}</strong><br>
+                                    {{ item.line_price | money }}
+
+                                    {% unless item.variant.title == 'Default Title' %}
+                                        <p>
+                                        {% for option in item.variant.options %}
+                                            {{ item.product.options[forloop.index0] }}：{{ option }}{% unless forloop.last %}<br>{% endunless %}
+                                        {% endfor %}
+                                        </p>
+                                    {% endunless %}
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="col-12 col-md-2 text-center">
+                                <hr class="d-block d-md-none">
+                                <span class="d-block-inline d-md-none">数量: </span>{{ item.quantity }}<br class="d-none d-md-block">
+                                <form method="post" action="/cart/change">
+                                    <input type="hidden" name="id" value="{{ item.key }}">
+                                    <input type="hidden" name="quantity" value="0">
+                                    <button type="submit" class="btn btn-dark btn-sm" onclick="return confirm('カートから商品を削除してもよろしいですか?');">削除</button>
+                                </form>
+                                </div>
+
+                                <div class="col col-md-2 text-center">
+                                <hr class="d-block d-md-none">
+                                <span class="d-block-inline d-md-none">小計: </span>{{ item.line_price | money }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row bg-lightblue mb-5">
+                        <div class="col text-right p-3">
+                            <strong>合計：{{ cart.total_price | money }}</strong>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col">
+                            <div class="cart_attention">
+                                <ul>
+                                    <li>・銀行振込でご購入の際の振込手数料は、お客様ご負担となります。</li>
+                                    <li>・ゆうちょ銀行で振込みいただく場合は、銀行振込を選択ください。</li>
+                                    <li>・コンビニ決済では30万円以上のご利用は出来ません。クレジットカード決済または銀行振込をご利用ください。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <form name="form" id="form_cart" method="post" action="https://www.kaneka-solar-marketing.jp/cs/cart">
+                        <div class="row justify-content-center mb-3">
+                            <div class="col-md-3">
+                                <a href="/checkout" class="btn btn-primary btn-blue btn-block">ご購入手続きに進む</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row justify-content-center mb-2">
+                        <div class="col-md-3">
+                            <a href="#" onclick="history.back(); return false;" class="btn btn-light btn-block">商品ページへ戻る</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+      </div>
+  </div>
+</main>

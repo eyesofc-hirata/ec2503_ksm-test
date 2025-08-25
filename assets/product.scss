@@ -1,0 +1,89 @@
+.product-detail {
+  .product-title h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0;
+  }
+  
+  .product-description {
+    em {
+      color: #0b3d8b;
+      font-weight: bold;
+      font-style: normal;
+      margin-right: 1em;
+    }
+  }
+  
+  .product-price {
+    color: inherit;
+    font-size: 2.0rem;
+    font-weight: bold;
+    
+    small {
+      font-size: 1.0rem;
+    }
+  }
+  
+  .btn-cartin {
+    font-size: 1.4rem;
+  }
+  
+  .icons {
+    .title {
+      color: #0b3d8b;
+      font-weight: bold;
+      border: 1px solid #0b3d8b;
+      display: block;
+      padding: 2px 0;
+    }
+
+    .icon {
+      display: block;
+    }
+
+    .value {
+      color: #0b3d8b;
+      font-weight: bold;
+      display: block;
+    }
+  }
+  
+  .product-detail-freearea {
+    h4 {
+      font-size: 1.4rem;
+    }
+    
+    h5 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .product-inspection-freearea {
+    .item {
+      border-bottom: 1px solid #999;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      
+      .item-title {
+        color: #0b3d8b;
+        font-weight: bold;
+        padding-left: 15px;
+      }
+      
+      .item-pill {
+        color: #0b3d8b;
+        font-size: 0.9rem;
+        text-align: center;
+        background-color: #bee8fc;
+        border-radius: 5px;
+        padding: 0.3rem 0 !important;
+      }
+      
+      .item-pill.disable {
+        color: #CCC;
+        background-color: #EEE;
+      }
+    }
+  }
+}

@@ -1,0 +1,227 @@
+@charset "UTF-8";
+/*-----------------------------------------------
+
+ FAQ
+
+-----------------------------------------------*/
+.faq {
+  display: block;
+}
+
+.faq h3.tit_faq {
+  font-weight: bold;
+  line-height: 25px;
+  background: url(../img_faq/faq.png) 0 0 no-repeat;
+  background-size: 40px;
+  padding: 10px 0 7px 50px;
+  margin-bottom: 10px;
+  border-bottom: #CCC solid 1px;
+  display: block;
+  clear: both;
+}
+
+/*メッセージ*/
+.faq p.mes {
+  display: block;
+  clear: both;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.faq p.mes a:link, .faq p.mes a:visited {
+  color: #09C;
+  text-decoration: none;
+}
+
+/*ダブ全体*/
+.tabContainer {
+  width: auto;
+  padding: 0;
+  margin: 0 0 25px;
+}
+
+/* タブ */
+.faq .tabContainer ul {
+  width: 100%;
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+.faq .tabContainer ul.tabMenu li {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0;
+  position: relative;
+  background: #09C;
+  list-style: none;
+}
+
+/* 未選択のタブ */
+.faq .tabContainer ul.tabMenu li a {
+  display: block;
+  color: #FFF;
+  text-decoration: none;
+}
+
+/* 選択中のタブ */
+.faq .tabContainer ul.tabMenu li.active,
+.faq .tabContainer ul.tabMenu li.active a {
+  color: #FFF;
+  background: #F39800;
+  position: relative;
+}
+
+/* カーソルオン時 */
+.faq .tabContainer ul.tabMenu li a:hover {
+  color: #FFC;
+  background: #3CC;
+}
+
+/* Q&A */
+.faq .faq_wrap {
+  background: #FFF;
+}
+
+.faq .tabContainer dl {
+  width: auto;
+  clear: both;
+  border: 1px solid #CCC;
+  margin: 0;
+  border-radius: 0 0 10px 10px;
+  background: #FFF;
+}
+
+/* Q */
+.faq .tabContainer dl dt {
+  font-weight: bold;
+  margin: 0 0 25px;
+  padding: 9px 15px 8px 45px;
+  background-image: url(../img_faq/f_q.png);
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-color: #f5f5f5;
+}
+
+/* A */
+.faq .tabContainer dl dd {
+  margin: 0 0 15px;
+  background-image: url(../img_faq/f_a.png);
+  background-repeat: no-repeat;
+  background-size: 23px;
+  display: block;
+}
+
+/*---------------------------------------
+PC CSS
+----------------------------------------*/
+@media screen and (min-width: 768px) {
+  .faq .tabContainer ul.tabMenu li {
+    min-width: 16%;
+    float: left;
+    text-align: center;
+    margin: 1px 0.2% 0 0;
+    /*-webkit-border-radius: 7px 7px 0 0;
+    -moz-border-radius: 7px 7px 0 0;
+    border-radius: 7px 7px 0 0;*/
+  }
+  .faq .tabContainer ul.tabMenu li a {
+    /*-webkit-border-radius: 7px 7px 0 0;
+    -moz-border-radius: 7px 7px 0 0;
+    border-radius: 7px 7px 0 0;*/
+    padding: 0.8em 5px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .faq .tabContainer ul {
+    height: auto;
+  }
+  .faq .tabContainer dl {
+    padding: 35px;
+    border: 1px solid #CCC;
+    min-height: 320px;
+    margin: 0;
+    border-radius: 0 0 10px 10px;
+    background: #FFF;
+  }
+  .faq .tabContainer dl dd {
+    padding: 5px 0 20px 45px;
+    background-position: 10px 12px;
+  }
+}
+/*---------------------------------------
+スマホ
+----------------------------------------*/
+@media screen and (max-width: 681px) {
+  .faq .tabContainer ul.tabMenu li {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: block;
+    clear: both;
+    border-bottom: #FFF solid 1px;
+  }
+  /* 未選択のタブ */
+  .faq .tabContainer ul.tabMenu li a {
+    display: block;
+    padding: 1em 1%;
+    color: #FFF;
+  }
+  .faq .tabContainer dl {
+    padding: 15px 10px 35px;
+  }
+  .faq .tabContainer dl dt {
+    margin: 0 0 15px;
+  }
+  .faq .tabContainer dl dd {
+    padding: 15px 5px 25px;
+    background-position: 10px 0;
+  }
+}
+/*---------------------------------------
+タブレット CSS
+----------------------------------------*/
+@media only screen and (min-width: 681px) and (max-width: 767px) {
+  .faq .tabContainer ul {
+    background: #09C;
+  }
+  .faq .tabContainer ul.tabMenu li {
+    width: 49.8%;
+    min-width: 33.1%;
+    float: left;
+    text-align: center;
+    margin: 1px 1px 0 0;
+    border-radius: 0;
+    vertical-align: bottom;
+  }
+  .faq .tabContainer ul.tabMenu li a {
+    border-radius: 0;
+    padding: 1em 1%;
+    vertical-align: middle;
+  }
+  .faq .tabContainer ul.tabMenu li:nth-child(3) {
+    clear: left;
+  }
+  .faq .tabContainer ul {
+    height: auto;
+  }
+  .faq .tabContainer dl {
+    padding: 25px 15px;
+    border: 1px solid #CCC;
+    min-height: 320px;
+    margin: 0;
+    border-radius: 0 0 10px 10px;
+    background: #FFF;
+  }
+  .faq .tabContainer dl dd {
+    padding: 5px 0 20px 45px;
+    background-position: 10px 12px;
+  }
+}
+/*# sourceMappingURL=faq.css.map */

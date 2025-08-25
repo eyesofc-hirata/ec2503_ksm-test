@@ -1,0 +1,212 @@
+<main class="mt-3">
+    {{ 'faq.css' | asset_url | stylesheet_tag }}
+    <div class="container-fluid px-0 pb-1 pb-md-5 page-content bg-white">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <p>お客さまからいただくご質問と回答やヘルプ情報を掲載しております。<br>こちらのページに掲載されていないご質問につきましては、お客様専用ダイヤルからお問い合わせください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main_bottom">
+        <!-- ▼FAQ -->
+        <style>
+            .faq .tabContainer ul.tabMenu li {
+                font-size: 1.1rem;
+            }
+
+            .qa-item {
+                border: 1px solid #000;
+            }
+
+            .qa-item .card {
+                border-radius: unset;
+            }
+
+            .page-content h3.question {
+                font-size: 1.5rem;
+                font-weight: bold;
+                padding: 0;
+                margin: 0;
+                background: none;
+            }
+
+            .answer {
+                font-size: 1.1rem;
+            }
+
+            /* タブ */
+            .faq .tabContainer ul.tabMenu li {
+                color: #0b3d8b;
+                background: #FFF;
+                border: 2px solid #0b3d8b;
+            }
+
+            /* 未選択のタブ */
+            .faq .tabContainer ul.tabMenu li a {
+                color: #0b3d8b;
+            }
+
+            /* 選択中のタブ */
+            .faq .tabContainer ul.tabMenu li.active,
+            .faq .tabContainer ul.tabMenu li.active a {
+                background: #0b3d8b;
+                position: relative;
+            }
+
+            .faq .tabContainer ul.tabMenu li.active:after {
+                content: "";
+                width: 100%;
+                height: 15px;
+                /*background-image: url("/cs/html/template/default/img/faq/arrow_down.png");*/
+                background-repeat: no-repeat;
+                background-position: top center;
+                display: block;
+                position: absolute;
+            }
+
+            /* カーソルオン時 */
+            .faq .tabContainer ul.tabMenu li a:hover {
+                color: #FFF;
+                background: #0b3d8b;
+            }
+        </style>
+
+        <script src="{{ 'jquery.faq.js' | asset_url }}"></script>
+
+        <div class="container-fluid px-0 page-content bg-white pt-0">
+            <div class="row no-gutters">
+                <div class="col">
+                    <div class="container">
+                        <div class="row mb-5">
+                            <div class="col">
+                                <div class="faq">
+                                    {%- assign faq_entries = shop.metaobjects.faq.values -%}
+                                    <div class="tabContainer">
+                                        <ul class="row no-gutters tabMenu mb-md-5" id="faqCategory">
+                                            <li class="col-12 col-md text-center mb-3" id="qa1"><a href="#faqCategory" title="お客様サポート全般">お客様サポート全般</a></li>
+                                            <li class="col-12 col-md text-center mb-3" id="qa2"><a href="#faqCategory" title="会員登録・お客様情報について">会員登録・お客様情報について</a></li>
+                                            <li class="col-12 col-md text-center mb-3" id="qa3"><a href="#faqCategory" title="災害・台風時の点検に関して">災害・台風時の点検に関して</a></li>
+                                            <li class="col-12 col-md text-center mb-3" id="qa4"><a href="#faqCategory" title="キャンセルについて">キャンセルについて</a></li>
+                                        </ul>
+                                        <div class="row justify-content-center qa_wrap">
+                                            <div class="col">
+                                                <div id="qa1_area">
+                                                    {%- assign faqs_order = faq_entries | where: "category", "お客様サポート全般" | sort: "order" -%}
+                                                    {% for faq in faqs_order %}
+                                                    <div class="row justify-content-center mb-5 qa_item">
+                                                        <div class="col">
+                                                            <div class="card">
+                                                                <div class="card-header px-3">
+                                                                    <h3 class="question">Q. {{ faq.title }}</h3>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row justify-content-center answer no-gutters">
+                                                                        <div class="col-auto" style="font-size: 1.6rem;">
+                                                                            <strong>A.&nbsp;</strong>
+                                                                        </div>
+                                                                        <div class="col mt-2">
+                                                                            {{ faq.content | metafield_tag }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+
+                                                <div id="qa2_area">
+                                                    {%- assign faqs_order = faq_entries | where: "category", "会員登録・お客様情報について" | sort: "order" -%}
+                                                    {% for faq in faqs_order %}
+                                                    <div class="row justify-content-center mb-5 qa_item">
+                                                        <div class="col">
+                                                            <div class="card">
+                                                                <div class="card-header px-3">
+                                                                    <h3 class="question">Q. {{ faq.title }}</h3>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row justify-content-center answer no-gutters">
+                                                                        <div class="col-auto" style="font-size: 1.6rem;">
+                                                                            <strong>A.&nbsp;</strong>
+                                                                        </div>
+                                                                        <div class="col mt-2">
+                                                                           {{ faq.content | metafield_tag }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+
+                                                <div id="qa3_area">
+                                                    {%- assign faqs_order = faq_entries | where: "category", "災害・台風時の点検に関して" | sort: "order" -%}
+                                                    {% for faq in faqs_order %}
+                                                    <div class="row justify-content-center mb-5 qa_item">
+                                                        <div class="col">
+                                                            <div class="card">
+                                                                <div class="card-header px-3">
+                                                                    <h3 class="question">Q. {{ faq.title }}</h3>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row justify-content-center answer no-gutters">
+                                                                        <div class="col-auto" style="font-size: 1.6rem;">
+                                                                            <strong>A.&nbsp;</strong>
+                                                                        </div>
+                                                                        <div class="col mt-2">
+                                                                            {{ faq.content | metafield_tag }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+
+                                                <div id="qa4_area">
+                                                    {%- assign faqs_order = faq_entries | where: "category", "キャンセルについて" | sort: "order" -%}
+                                                    {% for faq in faqs_order %}
+                                                    <div class="row justify-content-center mb-5 qa_item">
+                                                        <div class="col">
+                                                            <div class="card">
+                                                                <div class="card-header px-3">
+                                                                    <h3 class="question">Q. {{ faq.title }}</h3>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row justify-content-center answer no-gutters">
+                                                                        <div class="col-auto" style="font-size: 1.6rem;">
+                                                                            <strong>A.&nbsp;</strong>
+                                                                        </div>
+                                                                        <div class="col mt-2">
+                                                                            {{ faq.content | metafield_tag }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ▲FAQ -->
+
+    </div>
+</main>

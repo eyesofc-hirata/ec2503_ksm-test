@@ -1,0 +1,37 @@
+{% assign warranty_show = customer.metafields.custom.warranty_show %}
+
+{% if warranty_show == true %}
+    <div class="table-wrap js-tbl-scroll">
+        {% assign warranty_no = customer.metafields.custom.warranty_no %}
+        {% assign warranty_details = customer.metafields.custom.warranty_details %}
+        {% assign warranty_startdate = customer.metafields.custom.warranty_startdate %}
+        {% assign warranty_period = customer.metafields.custom.warranty_period %}
+        {% assign warranty_other = customer.metafields.custom.warranty_other %}
+        <table class="sec-history__table sec-history__table--info">
+            <tbody>
+            <tr>
+                <th class="table-hdg" scope="col">保証書No.</th>
+                <td class="table-item">{{ warranty_no }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">保証内容</th>
+                <td class="table-item">{{ warranty_details | newline_to_br }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">保証開始年月日</th>
+                <td class="table-item">{{ warranty_startdate | date: "%Y年%m月%d日" }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">保証期間</th>
+                <td class="table-item">{{ warranty_period | date: "%Y年%m月%d日" }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">その他保証に関する情報</th>
+                <td class="table-item">{{ warranty_other | newline_to_br }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% else %}
+  <p>現在、保証書NO.から情報を参照し登録しております。<br>情報が反映されるまでしばらくお待ちください。</p>
+{% endif %}

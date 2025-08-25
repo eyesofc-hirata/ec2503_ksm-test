@@ -1,0 +1,78 @@
+<header class="page-header fixed-top p-3">
+    <div class="container-fluid px-0">
+        <div class="row no-gutters navbar-expand-lg">
+            <div class="col-3 col-md-auto mr-md-auto">
+                <a href="https://www.kaneka-solar-marketing.jp/" class="d-block" target="_blank"><img src="{{ 'common_header-logo.png' | asset_url }}" class="img-fluid" alt="カネカソーラー販売株式会社"></a>
+            </div>
+            <div class="col-auto ml-auto d-md-none">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+
+                <div class="col-12 col-md-auto ml-md-auto p-0">
+
+                    <div class="row nav-sub justify-content-center justify-content-md-end no-gutters d-none d-md-flex">
+                        <div class="col-auto col-md-auto mr-1 text-center">
+                            <a href="/pages/home" class="btn btn-link"><i class="fas fa-angle-right"></i> ご利用中のお客様</a>
+                            <a href="/pages/houjin" class="btn btn-link"><i class="fas fa-angle-right"></i> 法人のお客様</a>
+                        </div>
+                        <div class="col-5 col-md-auto ml-md-3">
+                        {% if customer %}
+                            <a href="/account" class="btn btn-primary btn-orange mypage_link">ログイン中</a>
+                        {% else %}
+                            <a href="/account/login" class="btn btn-primary login_link">ログイン</a>
+                        {% endif %}
+                        </div>
+                        <div class="col-1 col-md-auto ml-md-3">
+                            <a href="/cart"><img src="{{ 'common_icon_cart.png' | asset_url }}" alt="カート" width="38" height="38"></a>
+                        </div>
+                    </div>
+                    <div class="row no-gutters nav-main text-center text-md-left d-none d-md-flex">
+                        <div class="col-md-auto nav-item">&nbsp;</div>
+                    </div>
+
+                    <div class="row nav-sub justify-content-center justify-content-md-end no-gutters d-md-none">
+                        <div class="col-12 d-md-none">
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto col-md-auto mr-1 text-center">
+                            <a href="/pages/home" class="btn btn-link"><i class="fas fa-angle-right"></i> ご利用中のお客様</a>
+                            <a href="/pages/houjin" class="btn btn-link"><i class="fas fa-angle-right"></i> 法人のお客様</a>
+                        </div>
+                        <div class="col-12 d-md-none">
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto col-md-auto ml-md-3">
+                            <a href="/account/login" class="btn btn-primary login_link">ログイン</a>
+                        </div>
+                        <div class="col-auto col-md-auto ml-2 ml-md-3">
+                            <a href="/cart"><img src="{{ 'common_icon_cart.png' | asset_url }}" alt="カート" width="34" height="34"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{%- render 'main-title' -%}
+
+<nav class="breadcrumb d-none d-md-block">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col">
+                {%- render 'breadcomb' -%}
+            </div>
+        </div>
+    </div>
+</nav>

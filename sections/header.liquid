@@ -1,0 +1,9 @@
+{% if template == 'index' %}
+  {% render 'header-top' %}
+{% elsif template == 'page.houjin' or template == 'page.houjin_manual' or template == 'page.houjin_register' or template == 'page.houjin_register_complete' %}
+  <!-- houjin または houjin_manual のとき -->
+  {% render 'header-houjin' %}
+{% else %}
+  <!-- その他のテンプレートのとき -->
+  {% render 'header-personal' %}
+{% endif %}

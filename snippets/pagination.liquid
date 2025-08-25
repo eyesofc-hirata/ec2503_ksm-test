@@ -1,0 +1,69 @@
+{% comment %}
+    Renders a pagination bar
+
+    Accepts:
+    - paginate: {Object} Paginate Liquid object (required)
+
+    Usage:
+    {% include 'pagination', paginate: paginate %}
+{% endcomment %}
+
+<div class="m-pager">
+<ul class="pagination m-pager__list">
+
+  {% unless paginate.previous.is_link %}
+    <li class="m-pager__item m-pager__item--prev" style="opacity: 0.15;" aria-hidden="true">
+      <a href="#" style="pointer-events: none;">
+        <i class="ico-arrow"></i><i class="ico-arrow-w is-hover"></i>
+      </a>
+        {% comment %}<button class="btn btn--tertiary btn--narrow" disabled>
+        {% include 'icon-arrow-left' %}
+        <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+      </button> {% endcomment %}
+    </li>
+    {% else %}
+    <li class="m-pager__item m-pager__item--prev">
+      <a href="{{ paginate.previous.url }}" class="btn btn--tertiary btn--narrow">
+        <i class="ico-arrow"></i><i class="ico-arrow-w is-hover"></i>
+        {% comment %} {% include 'icon-arrow-left' %}
+        <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span> {% endcomment %}
+      </a>
+    </li>
+  {% endunless %}
+
+  {% assign count = paginate.pages %}
+  {% for part in (1..count) %}
+  <li class="m-pager__item{% if paginate.current_page == part %} m-pager__item--current{% endif %}">
+    {% if paginate.current_page == part %}
+    <span>{{ forloop.index }}</span>
+    {% else %}
+    <a href="{{ collection.url }}?page={{ forloop.index }}">{{ forloop.index }}</a>
+    {% endif %}
+  </li>
+  {% endfor %}
+
+  {% comment %} <li class="pagination__text m-pager__item">
+    <span>{{ 'general.pagination.current_page' | t: current: paginate.current_page, total: paginate.pages }}</span>
+  </li> {% endcomment %}
+
+  {% unless paginate.next.is_link %}
+    <li class="m-pager__item m-pager__item--next" style="opacity: 0.15;" aria-hidden="true">
+      <a href="#" style="pointer-events: none;">
+        <i class="ico-arrow"></i><i class="ico-arrow-w is-hover"></i>
+      </a>
+      {% comment %} {<button class="btn btn--tertiary btn--narrow" disabled>
+        % include 'icon-arrow-right' %}
+        <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+      </button> {% endcomment %}
+    </li>
+  {% else %}
+    <li class="m-pager__item m-pager__item--next">
+      <a href="{{ paginate.next.url }}" class="btn btn--tertiary btn--narrow">
+        <i class="ico-arrow"></i><i class="ico-arrow-w is-hover"></i>
+        {% comment %} {% include 'icon-arrow-right' %}
+        <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span> {% endcomment %}
+      </a>
+    </li>
+  {% endunless %}
+</ul>
+</div>

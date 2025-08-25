@@ -1,0 +1,151 @@
+<main class="mt-3" id="page-register" data-scene="input">
+  {{ 'form.css' | asset_url | stylesheet_tag }}
+  <div class="container-fluid px-0 page-content bg-white">
+      <div class="row no-gutters">
+          <div class="col">
+              <div class="container">
+                <div id="select-houjincheck">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-md-10">
+                            <span class="is-input">下記の項目をご入力いただき、「入力内容の確認」ボタンをクリックしてください。</span>
+                            <span class="is-confirm">下記の項目をご入力いただき、「送信する」ボタンをクリックしてください。</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {% form 'create_customer', id: 'form-register' %}
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="form-hdg">基本情報</h3>
+                                    </div>
+                                </div>
+                                <ul class="alert alert-danger" id="error-message"></ul>
+                                {% if form.errors %}
+                                <div class="alert alert-danger">
+                                {{ form.errors | default_errors }}
+                                </div>
+                                {% endif %}
+
+                                <div class="row justify-content-center form-content">
+                                    <div class="col-md-12">
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto"><label for="customer_last_name" class="control-label">お名前</label></div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="row form-row">
+                                                    <div class="col-6">
+                                                        <input type="text" id="customer_last_name" name="customer[last_name]" placeholder="姓" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_customer_last_name"></span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input type="text" id="customer_first_name" name="customer[first_name]" placeholder="名" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_customer_first_name"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto"><label for="customer_email" class="control-label">メールアドレス</label></div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <input type="email" id="customer_email" name="customer[email]" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_customer_email"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3 show-input">
+                                                    <div class="col">
+                                                        <input type="email" id="customer_email2" name="customer[email2]" placeholder="確認のためもう一度入力してください" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row show-input">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto"><label for="customer_password" class="control-label">パスワード</label></div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="row mb-3 ">
+                                                    <div class="col">
+                                                        <input type="password" id="customer_password" name="customer[password]" placeholder="半角英数字記号8～32文字" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3 ">
+                                                    <div class="col">
+                                                        <input type="password" id="customer_password2" name="customer[password2]" placeholder="確認のためもう一度入力してください" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <span style="font-size:0.9rem; font-weight: bold;">※パスワードに使用可能な記号は「-_#$%」です。<br>※英数字、記号をそれぞれ1文字以上含めてください。</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center mb-5 show-input form-regalcheck">
+                                    <div class="col text-center">
+                                        <input type="checkbox" name="agreement" id="regalcheck">&nbsp;<label for="regalcheck"><a href="https://www.kaneka-solar-marketing.jp/privacy/" target="_blank">個人情報保護方針</a>、<a href="/policies/terms-of-service" target="_blank">サイトご利用規約</a>に同意する</label>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center" id="form-btn-input">
+                                    <div class="col-md-5">
+                                        <button type="button" class="btn btn-primary btn-block btn-blue" id="conf-button">入力内容の確認</button>
+                                    </div>
+                                </div>
+                                    <div class="row justify-content-center" id="form-btn-confirm">
+                                    <div class="col-md-5">
+                                        <button type="submit" class="btn btn-primary btn-block btn-blue" id="send-button">登録する</button>
+                                        <button type="button" class="btn btn-primary btn-block btn-blue" id="back-button">戻る</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="return_to" value="/pages/register_complete">
+                            {% endform %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid bg-grey p-0 py-3" style="margin-bottom: 100px; background-color: #F6F6F6;">
+        <div class="row no-gutters">
+            <div class="col">
+            <div class="container">
+                <div class="row justify-content-center">
+                <div class="col col-md-8">
+                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="/pages/houjin_register">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="align-middle p-2"><img src="{{ 'home_icon_building.png' | asset_url }}" class="img-fluid" alt="ユーザー登録"></td>
+                            <td class="align-middle py-2 px-3 button-title">法人用会員登録画面はこちら</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</main>

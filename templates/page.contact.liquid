@@ -1,0 +1,236 @@
+<main class="mt-3" id="page-contact" data-scene="input">
+  {{ 'form.css' | asset_url | stylesheet_tag }}
+  <div class="container-fluid page-content bg-white">
+      <div class="row">
+          <div class="col">
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col">
+                          <p class="mb-5">下記のフォームに必要事項を入力後、「個人情報の取り扱いについて」にご同意の上「確認する」ボタンをクリックしてください。<br>必須印の項目は必ず入力してください。</p>
+                          {% form 'contact', id: 'form-contact' %}
+                                <ul class="alert alert-danger" id="error-message"></ul>
+                                 {% if form.errors %}
+                                    <div class="alert alert-danger">
+                                    {{ form.errors | default_errors }}
+                                    </div>
+                                {% endif %}
+                                <div class="row justify-content-center form-content">
+                                    <div class="col-md-12">
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto"><label for="contact_last_name" class="control-label">お名前</label></div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="row form-row">
+                                                    <div class="col-6">
+                                                        <input type="text" id="contact_last_name" name="contact[last_name]" placeholder="姓" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_contact_last_name">ああああ</span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input type="text" id="contact_first_name" name="contact[first_name]" placeholder="名" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_contact_first_name">ああああ</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto"><label for="contact_last_kana" class="control-label">お名前(フリガナ)<br><small>※全角入力</small></label></div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="row form-row">
+                                                    <div class="col-6">
+                                                        <input type="text" id="contact_sei" name="contact[sei]" placeholder="セイ" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_contact_sei">ああああ</span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input type="text" id="contact_mei" name="contact[mei]" placeholder="メイ" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_contact_mei">ああああ</span>
+                                                    </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto"><label for="contact_zip01" class="control-label">会社所在地</label></div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-inline">
+                                                            〒&nbsp;<input type="text" id="contact_zip01" name="zip01" style="ime-mode: disabled;" pattern="\d*" class="form-control show-input" maxlength="3" /><span class="conf_txt" id="conf_contact_zip01">ああああ</span>&nbsp;-&nbsp;<span class="conf_txt" id="conf_contact_zip02">ああああ</span><input type="text" id="contact_zip02" name="zip02" style="ime-mode: disabled;" pattern="\d*" class="form-control show-input" maxlength="4" />
+                                                            <input type="hidden" id="contact_zip" name="contact[zip]" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto zip-search show-input">
+                                                        <small>郵便番号がわからない方<br><a href="https://www.post.japanpost.jp/zipcode/" target="_blank"><i class="fas fa-angle-right"></i> 郵便局「郵便番号検索」を開く</a></small>
+                                                        <div class="row mb-3">
+                                                            <div class="col">
+                                                                <a href="#" class="btn btn-default btn-blue noscroll" id="zip-search">郵便番号から住所を自動入力</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-auto input_zip"><select id="contact_pref" name="contact[pref]" class="form-control show-input">
+                                                            <option value="" selected="selected">都道府県を選択</option>
+                                                            <option value="北海道">北海道</option>
+                                                            <option value="青森県">青森県</option>
+                                                            <option value="岩手県">岩手県</option>
+                                                            <option value="宮城県">宮城県</option>
+                                                            <option value="秋田県">秋田県</option>
+                                                            <option value="山形県">山形県</option>
+                                                            <option value="福島県">福島県</option>
+                                                            <option value="茨城県">茨城県</option>
+                                                            <option value="栃木県">栃木県</option>
+                                                            <option value="群馬県">群馬県</option>
+                                                            <option value="埼玉県">埼玉県</option>
+                                                            <option value="千葉県">千葉県</option>
+                                                            <option value="東京都">東京都</option>
+                                                            <option value="神奈川県">神奈川県</option>
+                                                            <option value="新潟県">新潟県</option>
+                                                            <option value="富山県">富山県</option>
+                                                            <option value="石川県">石川県</option>
+                                                            <option value="福井県">福井県</option>
+                                                            <option value="山梨県">山梨県</option>
+                                                            <option value="長野県">長野県</option>
+                                                            <option value="岐阜県">岐阜県</option>
+                                                            <option value="静岡県">静岡県</option>
+                                                            <option value="愛知県">愛知県</option>
+                                                            <option value="三重県">三重県</option>
+                                                            <option value="滋賀県">滋賀県</option>
+                                                            <option value="京都府">京都府</option>
+                                                            <option value="大阪府">大阪府</option>
+                                                            <option value="兵庫県">兵庫県</option>
+                                                            <option value="奈良県">奈良県</option>
+                                                            <option value="和歌山県">和歌山県</option>
+                                                            <option value="鳥取県">鳥取県</option>
+                                                            <option value="島根県">島根県</option>
+                                                            <option value="岡山県">岡山県</option>
+                                                            <option value="広島県">広島県</option>
+                                                            <option value="山口県">山口県</option>
+                                                            <option value="徳島県">徳島県</option>
+                                                            <option value="香川県">香川県</option>
+                                                            <option value="愛媛県">愛媛県</option>
+                                                            <option value="高知県">高知県</option>
+                                                            <option value="福岡県">福岡県</option>
+                                                            <option value="佐賀県">佐賀県</option>
+                                                            <option value="長崎県">長崎県</option>
+                                                            <option value="熊本県">熊本県</option>
+                                                            <option value="大分県">大分県</option>
+                                                            <option value="宮崎県">宮崎県</option>
+                                                            <option value="鹿児島県">鹿児島県</option>
+                                                            <option value="沖縄県">沖縄県</option>
+                                                        </select>
+                                                        <span class="conf_txt" id="conf_contact_pref">ああああ</span>
+                                                        <span class="conf_txt" id="conf_contact_city">ああああ</span>
+                                                        <span class="conf_txt" id="conf_contact_address">ああああ</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3 show-input">
+                                                    <div class="col">
+                                                        <input type="text" id="contact_city" name="contact[city]" style="ime-mode: active;" placeholder="市区町村" class="form-control show-input" />
+                                                    </div>
+                                                </div>
+                                                <div class="row show-input">
+                                                    <div class="col"><input type="text" id="contact_address" name="contact[address]" style="ime-mode: active;" placeholder="番地・建物名" class="form-control" /></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto">
+                                                        <label for="contact_tel" class="control-label">電話番号<br><small>(携帯電話可)</small></label>
+                                                    </div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-12">
+                                                        <input type="text" id="contact_tel" name="contact[tel]" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_contact_tel">ああああ</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto"><label for="contact_email" class="control-label">メールアドレス</label></div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="row mb-3">
+                                                    <div class="col">
+                                                        <input type="email" id="contact_email" name="contact[email]" class="form-control show-input" />
+                                                        <span class="conf_txt" id="conf_contact_email">ああああ</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-3">
+                                            <div class="col-12 col-md-3 col-form-label">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto mr-auto"><label for="contact_contents" class="control-label">お問い合わせ内容</label></div>
+                                                    <div class="col-auto"><span class="required">必須</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-auto">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <textarea id="contact_contents" name="contact[contents]" class="form-control"></textarea>
+                                                        <p class="mini"><span class="attention">ご注文に関するお問い合わせには、必ず「ご注文番号」をご記入くださいますようお願いいたします。</span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center mb-5 show-input form-regalcheck">
+                                    <div class="col text-center">
+                                        <input type="checkbox" name="agreement" id="regalcheck">&nbsp;<label for="regalcheck"><a href="https://www.kaneka-solar-marketing.jp/privacy/" target="_blank">個人情報保護方針</a>、<a href="/policies/terms-of-service" target="_blank">サイトご利用規約</a>に同意する</label>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center" id="form-btn-input">
+                                    <div class="col-md-5">
+                                        <button type="button" class="btn btn-primary btn-block btn-blue" id="conf-button">入力内容の確認</button>
+                                    </div>
+                                </div>
+                                    <div class="row justify-content-center" id="form-btn-confirm">
+                                    <div class="col-md-5">
+                                        <button type="submit" class="btn btn-primary btn-block btn-blue" id="send-button">登録する</button>
+                                        <button type="button" class="btn btn-primary btn-block btn-blue" id="back-button">戻る</button>
+                                    </div>
+                                </div>
+                          {% endform %}
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</main>

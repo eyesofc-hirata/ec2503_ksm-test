@@ -1,0 +1,71 @@
+{% if template == 'index' %}
+  <span class="breadcrumb-item">お客様サポート TOP</span>
+{% else %}
+  <span class="breadcrumb-item"><a href="/">お客様サポート TOP</a></span>
+  {% if template contains 'product' %}
+    {% if product.tags contains '点検' %}
+      <span class="breadcrumb-item"><a href="/pages/inspection_guide">点検のご案内</a></span>
+      <span class="breadcrumb-item">{{ page_title }}</span>
+    {% else %}
+      <span class="breadcrumb-item"><a href="/pages/maintenance">商品購入のご案内</a></span>
+      <span class="breadcrumb-item">{{ page_title }}</span>
+    {% endif %}
+  {% elsif template contains 'page' %}
+    {% case page.handle %}
+      {% when 'home' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'check' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'manual' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'inspection_guide' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'inspection' %}
+        <span class="breadcrumb-item"><a href="/pages/inspection_guide">点検のご案内</a></span>
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'maintenance' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'warranty' %}
+        <span class="breadcrumb-item"><a href="/pages/maintenance">商品購入のご案内</a></span>
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'contact' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'faq' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'register_complete', 'register_complete2' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'houjin' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'houjin_manual', 'houjin_register', 'houjin_register_complete' %}
+        <span class="breadcrumb-item"><a href="/pages/houjin">法人のお客様</a></span>
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% when 'privacy-policy', 'terms-of-service', 'refund-policy', 'shipping-policy', 'legal-notice' %}
+        <span class="breadcrumb-item">{{ page_title }}</span>
+      {% else %}
+
+    {% endcase %}
+  {% elsif template == 'cart' %}
+    <span class="breadcrumb-item">ご注文の一覧</span>
+  {% elsif template contains 'customers/register' %}
+    <span class="breadcrumb-item">ユーザー登録</span>
+  {% elsif template contains 'customers/login' %}
+    <span class="breadcrumb-item">ユーザーログイン</span>
+  {% elsif template contains 'customers/reset_password' %}
+    <span class="breadcrumb-item">パスワードリセット</span>
+  {% elsif template contains 'customers/activate_account' %}
+    <span class="breadcrumb-item">アカウントを有効にする</span>
+  {% elsif template contains 'customers/account' %}
+    <span class="breadcrumb-item">マイページ</span>
+  {% elsif template contains 'customers/order' %}
+    <span class="breadcrumb-item"><a href="{{ routes.account_url }}">マイページ</a></span>
+    <span class="breadcrumb-item">注文情報</span>
+  {% elsif template contains 'customers/addresses' %}
+    <span class="breadcrumb-item"><a href="{{ routes.account_url }}">マイページ</a></span>
+    <span class="breadcrumb-item">住所情報</span>
+  {% elsif template contains '404' %}
+    <span class="breadcrumb-item">ページがみつかりません。</span>
+  {% else %}
+    <!-- その他のページ -->
+     <span class="breadcrumb-item">{{ page_title }}</span>
+  {% endif %}
+{% endif %}

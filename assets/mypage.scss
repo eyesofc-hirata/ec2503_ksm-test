@@ -1,0 +1,17 @@
+@mixin md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+.table {
+  font-size: 0.75rem;
+  
+  @include md {
+    font-size: 0.9rem;
+  }
+  
+  th {
+    font-size: 0.7rem;
+  }
+}

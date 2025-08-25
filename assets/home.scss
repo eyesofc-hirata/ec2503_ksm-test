@@ -1,0 +1,62 @@
+@mixin md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+
+main {
+  .button-title {
+    text-align: left;
+  }
+
+  .btn-block img {
+    max-width: 64px;
+    width: 64px;
+    height: auto;
+  }
+
+  .top-message {
+    line-height: 2;
+
+    .btn {
+      pointer-events: none;
+    }
+  }
+}
+
+
+.page-top {
+  main {
+    .button-title {
+      text-align: center;
+      font-size: 1.5rem;
+      padding-left: 0 !important;
+    }
+    
+    .page-content .notice {
+        color: #000;
+    }
+    
+    .page-content .notice h2, .page-content .notice h3, .page-content .notice p {
+        color: inherit;
+        font-size: 1.1rem;
+        padding: 0;
+        margin: 0;
+        background: none;
+    }
+    
+    .page-content .notice .underline {
+        text-decoration: underline;
+    }
+    
+    .page-content .notice h2 {
+        color: red;
+        font-size: 1.4rem;
+    }
+    
+    .font-lg {
+        font-size: 1.6rem;
+    }
+  }
+}

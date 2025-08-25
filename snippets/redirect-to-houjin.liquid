@@ -1,0 +1,16 @@
+{% assign is_corporate = false %}
+{% if customer %}
+  {% assign rank = customer.metafields.custom.membership_rank %}
+  {% if rank == '法人会員' %}
+    {% assign is_corporate = true %}
+  {% endif %}
+{% endif %}
+
+{% assign houjin_handle = product.handle | append: '_houjin' %}
+{% assign houjin_product = all_products[houjin_handle] %}
+
+{% if is_corporate and houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+  <script>
+    window.location.href = '{{ houjin_product.url }}';
+  </script>
+{% endif %}

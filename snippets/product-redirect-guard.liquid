@@ -1,0 +1,20 @@
+{% if template contains 'product' %}
+  {% assign type = product.metafields.custom.product_type %}
+  {% assign is_corporate = false %}
+  {% if customer %}
+    {% assign rank = customer.metafields.custom.membership_rank %}
+    {% if rank == '法人会員' %}
+      {% assign is_corporate = true %}
+    {% endif %}
+  {% endif %}
+
+  <script>
+    (function() {
+      var type = {{ type | json }};
+      var isCorporate = {{ is_corporate | json }};
+      if ((type === "法人向け商品" && !isCorporate) || type === "見積商品") {
+        location.replace('/');
+      }
+    })();
+  </script>
+{% endif %}

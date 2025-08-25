@@ -1,0 +1,165 @@
+<header class="page-header fixed-top p-3">
+    <div class="container-fluid px-0">
+        <div class="row no-gutters navbar-expand-lg">
+            <div class="col-3 col-md-auto mr-md-auto">
+                <a href="https://www.kaneka-solar-marketing.jp/" class="d-block" target="_blank"><img src="{{ 'common_header-logo.png' | asset_url }}" class="img-fluid" alt="カネカソーラー販売株式会社"></a>
+            </div>
+            <div class="col-auto ml-auto d-md-none">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+
+                <div class="col-12 col-md-auto ml-md-auto p-0">
+
+                    <div class="row nav-sub justify-content-center justify-content-md-end no-gutters d-none d-md-flex">
+                        <div class="col-auto col-md-auto mr-1 text-center">
+                            <a href="/pages/home" class="btn btn-link"><i class="fas fa-angle-right"></i> ご利用中のお客様</a>
+                            <a href="/pages/houjin" class="btn btn-link"><i class="fas fa-angle-right"></i> 法人のお客様</a>
+                        </div>
+                        <div class="col-5 col-md-auto ml-md-3">
+                        {% if customer %}
+                            <a href="/account" class="btn btn-primary btn-orange mypage_link">ログイン中</a>
+                        {% else %}
+                            <a href="/account/login" class="btn btn-primary login_link">ログイン</a>
+                        {% endif %}
+                        </div>
+                        <div class="col-1 col-md-auto ml-md-3">
+                            <a href="/cart"><img src="{{ 'common_icon_cart.png' | asset_url }}" alt="カート" width="38" height="38"></a>
+                        </div>
+                    </div>
+                    <div class="row no-gutters nav-main text-center text-md-left d-none d-md-flex">
+                        <div class="col-md-auto nav-item"><a href="/">お客様サポートTOP</a></div>
+                        <div class="col-md-auto nav-item"><a href="/pages/check">故障かな?と思ったら</a></div>
+                        <div class="col-md-auto nav-item"><a href="/pages/faq">よくあるご質問</a></div>
+                        <div class="col-md-auto nav-item dropdown">
+                            <a href="/pages/inspection_guide" class="noscroll">点検のご案内</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/pages/inspection_guide"><i class="fas fa-angle-right"></i> 点検のご案内</a></li>
+                                <li><a href="/pages/inspection"><i class="fas fa-angle-right"></i> 点検のご依頼・点検コースの詳細</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-auto nav-item dropdown">
+                            <a href="/pages/maintenance" class="noscroll">商品購入のご案内</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/pages/maintenance"><i class="fas fa-angle-right"></i> 商品購入のご案内</a></li>
+                                <li><a href="/pages/warranty"><i class="fas fa-angle-right"></i> 交換セット購入時の保証</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-auto nav-item"><a href="/pages/manual">製品マニュアルダウンロード</a></div>
+                    </div>
+
+                    <div class="row nav-sub justify-content-center justify-content-md-end no-gutters d-md-none">
+                        <div class="col-12 d-md-none">
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto col-md-auto mr-1 text-center">
+                            <a href="/pages/home" class="btn btn-link"><i class="fas fa-angle-right"></i> ご利用中のお客様</a>
+                            <a href="/pages/houjin" class="btn btn-link"><i class="fas fa-angle-right"></i> 法人のお客様</a>
+                        </div>
+                        <div class="col-12 d-md-none">
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto col-md-auto ml-md-3">
+                            <a href="/account/login" class="btn btn-primary login_link">ログイン</a>
+                        </div>
+                        <div class="col-auto col-md-auto ml-2 ml-md-3">
+                            <a href="/cart"><img src="{{ 'common_icon_cart.png' | asset_url }}" alt="カート" width="34" height="34"></a>
+                        </div>
+                    </div>
+                    <hr class="d-md-none">
+                    <div class="nav-main-sp row no-gutters d-md-none text-left">
+                        <div class="col-12 pb-2 border-bottom"><a href="/">お客様サポートTOP</a></div>
+                        <div class="col-12 py-2 border-bottom"><a href="/pages/check">故障かな?と思ったら</a></div>
+                        <div class="col-12 py-2 border-bottom"><a href="/pages/faq">よくあるご質問</a></div>
+                        <div class="col-12 py-2 border-bottom">
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <a href="/pages/inspection_guide">点検のご案内</a>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="#" class="toggle noscroll"><i class="fas fa-plus-circle"></i></a>
+                                </div>
+                            </div>
+                            <div class="row no-gutters mt-2" style="font-size:0.8rem; display:none;">
+                                <div class="col-6 border">
+                                    <table class="table table-borderless table-sm" style="height:100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="align-middle"><a href="/pages/inspection_guide">点検のご案内</a></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-6 border border-left-0">
+                                    <table class="table table-borderless table-sm" style="height:100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="align-middle"><a href="/pages/inspection">点検のご依頼・<br>点検コースの詳細</a></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 py-2 border-bottom">
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <a href="/pages/maintenance">商品購入のご案内</a>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="#" class="toggle noscroll"><i class="fas fa-plus-circle"></i></a>
+                                </div>
+                            </div>
+                            <div class="row no-gutters mt-2" style="font-size:0.8rem; display:none;">
+                                <div class="col-6 py-1 border">
+                                    <table class="table table-borderless table-sm" style="height:100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="align-middle"><a href="/pages/maintenance">商品購入のご案内</a></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-6 py-1 border border-left-0">
+                                    <table class="table table-borderless table-sm" style="height:100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="align-middle"><a href="/pages/warranty">交換セット購入時の保証</a></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 py-2 border-bottom"><a href="/pages/manual">製品マニュアルダウンロード</a></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{%- render 'main-title' -%}
+
+<nav class="breadcrumb d-none d-md-block">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col">
+                {%- render 'breadcomb' -%}
+            </div>
+        </div>
+    </div>
+</nav>

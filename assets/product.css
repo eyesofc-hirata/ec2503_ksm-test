@@ -1,0 +1,67 @@
+.product-detail .product-title h2 {
+  font-size: 1.5rem !important;
+  margin-bottom: 0;
+}
+.product-detail .product-description em {
+  color: #0b3d8b;
+  font-weight: bold;
+  font-style: normal;
+  margin-right: 1em;
+}
+.product-detail .product-price {
+  color: inherit;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.product-detail .product-price small {
+  font-size: 1rem;
+}
+.product-detail .btn-cartin {
+  font-size: 1.4rem;
+}
+.product-detail .icons .title {
+  color: #0b3d8b;
+  font-weight: bold;
+  border: 1px solid #0b3d8b;
+  display: block;
+  padding: 2px 0;
+}
+.product-detail .icons .icon {
+  display: block;
+}
+.product-detail .icons .value {
+  color: #0b3d8b;
+  font-weight: bold;
+  display: block;
+}
+.product-detail .product-detail-freearea h4 {
+  font-size: 1.4rem;
+}
+.product-detail .product-detail-freearea h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.product-detail .product-inspection-freearea .item {
+  border-bottom: 1px solid #999;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+.product-detail .product-inspection-freearea .item .item-title {
+  color: #0b3d8b;
+  font-weight: bold;
+  padding-left: 15px;
+}
+.product-detail .product-inspection-freearea .item .item-pill {
+  color: #0b3d8b;
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: #bee8fc;
+  border-radius: 5px;
+  padding: 0.3rem 0 !important;
+}
+.product-detail .product-inspection-freearea .item .item-pill.disable {
+  color: #CCC;
+  background-color: #EEE;
+}
+/*# sourceMappingURL=product.css.map */

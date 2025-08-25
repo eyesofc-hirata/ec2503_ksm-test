@@ -1,0 +1,604 @@
+<main class="mt-3">
+    {{ 'inspection.css' | asset_url | stylesheet_tag }}
+    <style>
+        .arrow-down {
+            color: #0b3d8b;
+            font-size: 2.0rem;
+            text-align: center;
+        }
+    </style>
+    <div class="container-fluid px-0 page-content bg-white">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    {% unless customer %}
+                    <div class="row mb-5">
+                        <div class="col">
+                            <div class="well text-md-center">
+                                <p class="lead mb-0">各種サービスをご利用の際は、ユーザー登録が必要です。（ご登録は<a href="/account/register">こちら</a>より）</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endunless %}
+                    <div class="row mb-5">
+                        <div class="col text-md-center">
+                            <p>太陽電池モジュールやその他周辺機器の「点検の流れ」と「点検内容」についてご説明いたします。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h2 class="text-center">点検の流れ</h2>
+                        </div>
+                    </div>
+
+
+                    <div class="flow">
+                        <div class="row flow-title">
+                            <div class="col-auto">
+                                点検のお申込み<br class="d-md-none">～点検日当日まで
+                            </div>
+                            <div class="col-auto ml-auto">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                        </div>
+                        <div class="flow-items">
+                            <div class="row flow-item">
+                                <div class="col mb-4">
+                                    ※点検のお申込みの前に、<a href="/pages/check">こちら</a>よりセルフチェックをお願いします。
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>１.ご希望の点検コースをお選びください</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">点検コースの詳細については<a href="/pages/inspection">こちら</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>２. ご入金</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">カード決済はWEBより可能です。お振込みをご選択の場合は、期日までにご入金をお願いします。
+                                                            <div class="row no-gutters">
+                                                                <div class="col-auto">
+                                                                    ※
+                                                                </div>
+                                                                <div class="col">
+                                                                    期日までに、ご入金がない場合は、お申込みをキャンセルとさせていただきますことをご了承下さい。
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>３. 点検日の決定</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">ご入金確認後、3日以内に弊社コールセンターより、工事日程調整のため、お電話をさせていただきます。<br>工事日は、ご入金日より1週間後以降にて設定させていただきます。</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>４. 点検日当日</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center">
+                                                            </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">点検作業を行います。</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flow">
+                        <div class="row flow-title">
+                            <div class="col-auto">
+                                点検日当日 <br class="d-md-none"><small>※設置されている機器や<br class="d-md-none">点検コースの内容によって<br class="d-md-none">点検の流れは異なります。</small>
+                            </div>
+                            <div class="col-auto ml-auto">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                        </div>
+                        <div class="flow-items">
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>１. 問診 (5〜10分)</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">過去のエラー発生状況の有無や発電に関してお気付きの点をお伺いさせていただきます。</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>２. 設置状況の確認 (10〜15分)</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">設置場所の確認 点検履歴として写真を撮らせて頂きます。<br>また、周囲環境の状況など確認します。</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>３. 機器の点検 (30分〜5時間30分)</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">パワーコンディショナの点検や接続箱での各種測定、発電量測定器を使用した測定などを行います。</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>４. 点検結果のご説明 (15分)</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center">
+                                                            </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">点検作業終了後に点検の結果をお知らせいたします。<br>その際、機器の交換工事が必要な場合は、併せて、ご説明させていただきます。<br>（交換工事の必要がない場合は、後日、点検報告書を郵送にてお届けいたします）</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flow">
+                        <div class="row flow-title">
+                            <div class="col-auto">
+                                点検終了後に、機器<br class="d-md-none">の交換工事が必要な<br class="d-md-none">場合
+                            </div>
+                            <div class="col-auto ml-auto">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                        </div>
+                        <div class="flow-items">
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>１. 交換機器のご購入手続き</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">点検報告書をご確認の上、交換商品をご購入ください。<br>（ご購入の際は、マイページへのご登録が必要になります）</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>２. ご入金</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">カード決済はWEBより可能です。お振込みをご選択の場合は、期日までにご入金をお願いします。
+                                                            <div class="row no-gutters">
+                                                                <div class="col-auto">
+                                                                    ※
+                                                                </div>
+                                                                <div class="col">
+                                                                    期日までに、ご入金がない場合は、お申込みをキャンセルとさせていただきますことをご了承下さい。
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>３. 工事日の決定</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center"><img src="{{ 'inspection_arrow-down.png' | asset_url }}" alt="↓"></th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">ご入金確認後、3日以内に弊社コールセンターより、工事日程調整のため、お電話をさせていただきます。<br>工事日は、ご入金日より1週間後以降にて設定させていただきます。</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row flow-item">
+                                <div class="col">
+                                    <div class="row flow-item-title">
+                                        <div class="col">
+                                            <h4>４. 工事日当日</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters flow-item-body">
+                                        <div class="col-2 col-md-1">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle text-center">
+                                                            </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-10 col-md-11">
+                                            <table class="table table-borderless table-sm" style="height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">機器の交換作業を行います。<br>機器の保証内容については、マイページよりご確認いただけます。<br>（内容の反映には数日かかります）</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid page-content px-0" id="inspection-points">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="row mb-5">
+                        <div class="col">
+                            <h2 class="text-center">点検内容</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-5">
+                        <div class="col text-md-center">
+                            点検箇所と点検内容については下記をご覧ください。
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col">
+                            <img src="{{ 'inspection_house.png' | asset_url }}" class="img-fluid" alt="点検箇所">
+                        </div>
+                    </div>
+                    <div class="row inspection-areas mb-5">
+                        <div class="col-md-4">
+                            <div class="inspection-area-item">
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        <img src="{{ 'inspection_point1.png' | asset_url }}" class="img-fluid" alt="1">
+                                    </div>
+                                    <div class="col inspection-area-item-title">
+                                        モニター
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        発電量の履歴確認、総発電量、エラー履歴を確認します。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inspection-area-item">
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        <img src="{{ 'inspection_point2.png' | asset_url }}" class="img-fluid" alt="2">
+                                    </div>
+                                    <div class="col inspection-area-item-title">
+                                        接続箱
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        太陽電池モジュールの発電量状況、絶縁抵抗、電圧、電流、発電量を測定します。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inspection-area-item">
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        <img src="{{ 'inspection_point3.png' | asset_url }}" class="img-fluid" alt="3">
+                                    </div>
+                                    <div class="col inspection-area-item-title">
+                                        パワーコンディショナ
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        発電状況、総発電量、エラー履歴を確認します。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-4">
+                            <div class="inspection-area-item">
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        <img src="{{ 'inspection_point4.png' | asset_url }}" class="img-fluid" alt="4">
+                                    </div>
+                                    <div class="col inspection-area-item-title">
+                                        分電盤
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        電力側の系統電圧、太陽光ブレーカの設置状況を確認します。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inspection-area-item">
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        <img src="{{ 'inspection_point5.png' | asset_url }}" class="img-fluid" alt="5">
+                                    </div>
+                                    <div class="col inspection-area-item-title">
+                                        太陽電池モジュール
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        設置状況及び、ポールカメラまたはドローンによる外観確認を行います。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inspection-area-item">
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        <img src="{{ 'inspection_point6.png' | asset_url }}" class="img-fluid" alt="6">
+                                    </div>
+                                    <div class="col inspection-area-item-title">
+                                        計測ユニット
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        動作状況を確認します。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col col-md-8">
+                            <a class="btn btn-block btn-blue py-4" href="/pages/inspection"><span class="large" style="font-size:1.25rem;">点検のご依頼・点検コースの<br class="d-md-none">詳細はこちら</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('.course-item .course-title.type1, .course-item .course-title.type2').tile();
+            $('.course-item .description').tile();
+            $('.inspection-area-item').tile();
+
+            $('.flow-title').on('click', function () {
+                if ($('.fas', $(this)).hasClass('open') == true) {
+                    $('.fas', $(this)).removeClass('fa-minus-circle').addClass('fa-plus-circle').removeClass('open');
+                } else {
+                    $('.fas', $(this)).removeClass('fa-plus-circle').addClass('fa-minus-circle').addClass('open');
+                }
+
+                $(this).next().slideToggle();
+            });
+        });
+    </script>
+</main>

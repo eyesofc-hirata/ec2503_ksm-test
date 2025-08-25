@@ -1,0 +1,24 @@
+.order-nav {
+  background-color: #EEE;
+  
+  .order-nav-item {
+    padding: 1em 0;
+  }
+  
+  .active {
+    color: #FFF;
+    background-color: #0b3d8b;
+  }
+}
+
+.order-list {
+  .order-list-header {
+    background-color: #EEE;
+  }
+  
+  .order-list-item {
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,193 @@
+.course-title {
+  color: #FFF;
+  font-size: 1.2rem;
+  padding: 5px 0;
+  background-color: #6f86ab;
+}
+
+.course-title.type1 {
+  padding: 20px 0;
+}
+
+.course-title.type2 {
+  padding: 20px 0;
+  background-color: #0b3d8b;
+}
+
+.course-title.typeB {
+  padding: 20px 0;
+  background: linear-gradient(75deg, #c28e57, #8b4d0b);
+}
+
+.course-title.typeS {
+  padding: 20px 0;
+  background: linear-gradient(75deg, #c2c0c0, #9c9a9a);
+}
+
+.course-title.typeG {
+  padding: 20px 0;
+  background: linear-gradient(75deg, #eacb5f, #d3a506);
+}
+
+.course-body .price {
+  color: #14ae93;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+.course-body .icons .title {
+  color: #0b3d8b;
+  font-weight: bold;
+  border: 1px solid #0b3d8b;
+  display: block;
+  padding: 2px 0;
+}
+.course-body .icons .icon {
+  display: block;
+}
+.course-body .icons .value {
+  color: #0b3d8b;
+  font-weight: bold;
+  display: block;
+}
+.course-body .btn {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+
+.courses .course-item {
+  margin: 10px;
+}
+.courses .course-item .course-title {
+  color: #FFF;
+  font-size: 1.2rem;
+  padding: 5px 0;
+  background-color: #6f86ab;
+}
+.courses .course-item .course-title .recommend_icon {
+  position: absolute;
+  left: 0;
+  margin: -25px 0 0 -7px;
+}
+.courses .course-item .course-title.type1 {
+  padding: 15px 0;
+}
+.courses .course-item .course-title.type2 {
+  padding: 15px 0 10px;
+  background-color: #0b3d8b;
+}
+.courses .course-item .course-title.typeB {
+  padding: 20px 0;
+  background: linear-gradient(75deg, #c28e57, #8b4d0b);
+}
+.courses .course-item .course-title.typeS {
+  padding: 20px 0;
+  background: linear-gradient(75deg, #c2c0c0, #9c9a9a);
+}
+.courses .course-item .course-title.typeG {
+  padding: 20px 0;
+  background: linear-gradient(75deg, #eacb5f, #d3a506);
+}
+.courses .course-item .course-body {
+  font-size: 0.8rem;
+  border: 1px solid #d2d2d2;
+  border-top: none;
+  background-color: #FFF;
+  padding: 15px;
+}
+.courses .course-item .course-body .price {
+  color: #14ae93;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+.courses .course-item .course-body .icons .title {
+  color: #0b3d8b;
+  font-weight: bold;
+  border: 1px solid #0b3d8b;
+  display: block;
+  padding: 2px 0;
+}
+.courses .course-item .course-body .icons .icon {
+  display: block;
+}
+.courses .course-item .course-body .icons .value {
+  color: #0b3d8b;
+  font-weight: bold;
+  display: block;
+}
+.courses .course-item .course-body .btn {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+
+.stepnav .stepnav-item .stepnav-item-title {
+  color: #0b3d8b;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #bee8fd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.stepnav .stepnav-item ul {
+  font-size: 0.9rem;
+  line-height: 1.5em;
+  list-style: none;
+  padding-left: 15px;
+}
+.stepnav .stepnav-item ul > li {
+  list-style-image: url(../img/common/arrow_s.png);
+  margin-bottom: 20px;
+}
+.stepnav .stepnav-cursor {
+  padding-top: 25px;
+}
+
+.inspection-areas .inspection-area-item {
+  margin-bottom: 10px;
+  padding: 15px;
+  border: 2px solid #0e87cc;
+  background-color: #FFF;
+}
+.inspection-areas .inspection-area-item .inspection-area-item-title {
+  color: #1093de;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-left: 0;
+}
+
+.flow {
+  width: 90%;
+  margin: 0 auto 15px;
+  margin-bottom: 15px;
+}
+.flow .flow-title {
+  color: #0b3d8b;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1em;
+  padding: 4px 10px 7px;
+  background-color: #F0F0F0;
+  cursor: pointer;
+}
+.flow .flow-items {
+  display: none;
+  margin-top: 10px;
+}
+.flow .flow-items .flow-item .flow-item-title h4 {
+  color: #333;
+  padding: 4px 10px 7px;
+  margin-bottom: 15px;
+  background-color: rgba(240, 240, 240, 0.75);
+}
+.flow .flow-items .flow-item .flow-item-body {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+.flow .flow-items .flow-item .flow-item-body .arrow-down {
+  background-image: url(../img/inspection/arrow_head.png), url(../img/inspection/arrow_body.png);
+  background-repeat: no-repeat, repeat-y;
+  background-size: contain, contain;
+  background-position: center bottom, center top;
+}
+/*# sourceMappingURL=inspection.css.map */

@@ -1,0 +1,70 @@
+{% render 'product-redirect-guard' %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+    <meta name="description" content="">
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    {{ 'perfect-scrollbar.css' | asset_url | stylesheet_tag }}
+    {{ 'clingify.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+
+    <script src="{{ 'jquery-3.3.1.min.js' | asset_url }}"></script>
+    <script src="{{ 'jquery.matchHeight-min.js' | asset_url }}"></script>
+    <script src="{{ 'perfect-scrollbar.min.js' | asset_url }}"></script>
+    <script src="{{ 'popper.min.js' | asset_url }}"></script>
+    <script src="{{ 'bootstrap.min.js' | asset_url }}"></script>
+    <script src="{{ 'jquery.clingify.js' | asset_url }}"></script>
+    <script src="{{ 'jquery.tile.min.js' | asset_url }}"></script>
+    <script src="//ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+    <script src="{{ 'include.js' | asset_url }}"></script>
+    <script src="{{ 'function.js' | asset_url }}" defer="defer"></script>
+
+    {{ content_for_header }}
+</head>
+
+<body class="
+  {% if template == 'index' %}page-top
+  {% elsif template contains 'product' %}page-product
+  {% elsif template contains 'page' %}
+    {% case page.handle %}
+      {% when 'about' %}page-about
+      {% when 'faq' %}page-faq
+      {% when 'contact' %}page-contact
+      {% when 'privacy-policy' %}page-policy-privacy
+      {% when 'terms-of-service' %}page-policy-terms
+      {% else %}page-generic
+    {% endcase %}
+  {% elsif template contains 'customers/login' %}page-page-login
+  {% elsif template contains 'customers/register' %}page-page-register
+  {% elsif template contains 'customers/reset_password' %}page-page-reset
+  {% elsif template contains 'customers/account' or template contains 'customers/addresses' %}page-page-account
+  {% elsif template contains '404' %}page-404
+  {% else %}page-default
+  {% endif %}
+">
+
+  {% section 'header' %}
+
+  <!-- main -->
+  {{ content_for_layout }}
+  <!-- // main -->
+
+  {% section 'footer' %}
+</body>
+</html>

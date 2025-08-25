@@ -1,0 +1,18 @@
+.cnav .btn-outline-blue {
+  color: #0b3d8b;
+  border-color: #0b3d8b;
+  border-radius: 0;
+  font-size: 0.8rem;
+  padding: 10px 0;
+}
+@media (min-width: 768px) {
+  .cnav .btn-outline-blue {
+    font-size: 1rem;
+  }
+}
+
+.cnav .btn-outline-blue:hover {
+  color: #FFF;
+  background-color: #0b3d8b;
+}
+/*# sourceMappingURL=houjin_manual.css.map */

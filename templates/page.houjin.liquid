@@ -1,0 +1,119 @@
+<main class="mt-3">
+    {{ 'home.css' | asset_url | stylesheet_tag }}
+    <div class="container-fluid page-content bg-white mb-1 p-0">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col mb-5 text-md-center top-message">
+                            カネカ太陽光発電システムをご利用中の法人のお客様向けのページです。
+                            {% unless customer %}
+                            <br>
+                            ※一部サービスのご利用にはユーザー登録が必要です。<br>
+                            ページ右上の <span class="btn btn-primary">ログイン</span> からご登録ください。
+                            {% endunless %}
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col col-md-6 mb-4">
+                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="/pages/check">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle p-2"><img src="{{ 'home_icon_check.png' | asset_url }}" class="img-fluid" alt="故障かな?と思ったら"></td>
+                                            <td class="align-middle py-2 px-3 button-title">故障かな?と<br class="d-sm-none">思ったら</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </div>
+                        <div class="col col-md-6 mb-4">
+                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="/pages/faq">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle p-2"><img src="{{ 'home_icon_faq.png' | asset_url }}" class="img-fluid" alt="よくあるご質問"></td>
+                                            <td class="align-middle py-2 px-3 button-title">よくあるご質問</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col col-md-6 mb-4">
+                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="/pages/inspection_guide">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle p-2"><img src="{{ 'home_icon_inspection_guide.png' | asset_url }}" class="img-fluid" alt="点検のご案内"></td>
+                                            <td class="align-middle py-2 px-3 button-title">点検のご案内</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </div>
+                        <div class="col col-md-6 mb-4">
+                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="/pages/maintenance">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle p-2"><img src="{{ 'home_icon_shopping.png' | asset_url }}" class="img-fluid" alt="商品購入のご案内"></td>
+                                            <td class="align-middle py-2 px-3 button-title">修理・メンテナンス用の<br class="d-sm-none">商品を探す</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col col-md-6 mb-4">
+                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="/pages/manual">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle p-2"><img src="{{ 'home_icon_manual.png' | asset_url }}" class="img-fluid" alt="製品マニュアルダウンロード"></td>
+                                            <td class="align-middle py-2 px-3 button-title">製品マニュアル<br class="d-sm-none">ダウンロード</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </div>
+                        <div class="col col-md-6 mb-4">
+                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="/pages/houjin_manual">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle p-2"><img src="{{ 'houjin_icon_manual.png' | asset_url }}" class="img-fluid" alt="取扱説明書・設置マニュアルを探す"></td>
+                                            <td class="align-middle py-2 px-3 button-title">取扱説明書・施工マニュアル<br class="d-sm-none">を探す</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-grey p-0 py-3" style="margin-bottom: 100px; background-color: #F6F6F6;">
+        <div class="row no-gutters">
+            <div class="col">
+            <div class="container">
+                <div class="row justify-content-center">
+                <div class="col col-md-8">
+                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="/pages/houjin_register">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="align-middle p-2"><img src="{{ 'home_icon_building.png' | asset_url }}" class="img-fluid" alt="ユーザー登録"></td>
+                            <td class="align-middle py-2 px-3 button-title">法人用会員登録画面はこちら</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</main>

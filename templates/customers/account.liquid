@@ -1,0 +1,99 @@
+<main class="mt-3" id="page-account">
+{{ 'theme.css' | asset_url | stylesheet_tag }}
+{{ 'styles_account.css' | asset_url | stylesheet_tag }}
+<div class="container-fluid page-content bg-white">
+<div class="row">
+<div class="col">
+<div class="container">
+
+  <div class="sec-account sec-account--wide">
+    <p class="sec-shipping__back sec-shipping__back--top"><a href="{{ routes.account_logout_url }}" class="mi-hov-b"><span><img src="{{ 'ico_arw01.svg' | asset_url }}" width="12" height="6" alt=""></span>ログアウトする</a></p>
+    {% if customer %}
+    <p class="sec-account__hdg f-bold">{{ customer.last_name }} {{ customer.first_name }} 様</p>
+    {% endif %}
+
+    <div class="sec-history js-tbl-more">
+      <h2 class="sec-address__hdg f-bold">見積もり一覧</h2>
+
+      {% render 'account-estimate' %}
+    <!-- .sec-history // --></div>
+
+
+    <div class="sec-history">
+      <h2 class="sec-address__hdg f-bold">保証書情報</h2>
+      {% render 'account-warranty' %}
+    </div>
+
+    <div class="sec-history">
+      <h2 class="sec-address__hdg f-bold">登録機器情報</h2>
+      {% render 'account-device' %}
+    </div>
+
+    <div class="sec-history">
+      <h2 class="sec-address__hdg f-bold">定期点検（有償）のお申込み</h2>
+      {% render 'account-inspection' %}
+    </div>
+
+    <div class="sec-address">
+      <h2 class="sec-address__hdg f-bold">配送先住所</h2>
+      {% comment %} <h2>{{ 'customer.account.details' | t }}</h2> {% endcomment %}
+
+      {{ customer.default_address | format_address }}
+
+      <div class="sec-address__btn l-flex-grid">
+          <p class="btn-confirm"><a href="{{ routes.account_addresses_url }}" class="btn btn--small">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+      </div>
+    </div>
+
+    <div class="sec-history">
+      <h2 class="sec-address__hdg f-bold">注文履歴</h2>
+      {% paginate customer.orders %}
+        {% if customer.orders.size != 0 %}
+
+        <div class="table-wrap js-tbl-scroll">
+          <table class="sec-history__table sec-history__table--history-list">
+            <thead>
+              <tr>
+                <th class="table-hdg table-hdg--order" scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                <th class="table-hdg table-hdg--date" scope="col">{{ 'customer.orders.date' | t }}</th>
+                <th class="table-hdg table-hdg--payment" scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                <th class="table-hdg table-hdg--confirm" scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th class="table-hdg table-hdg--total" scope="col">{{ 'customer.orders.total' | t }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr>
+                  <td class="table-item" data-label="{{ 'customer.orders.order_number' | t }}" scope="row">
+                    <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
+                  </td>
+                  <td class="table-item" data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | time_tag: format: 'date' }}</td>
+                  <td class="table-item" data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                  <td class="table-item" data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                  <td class="table-item" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        {% else %}
+
+          <p>{{ 'customer.orders.none' | t }}</p>
+
+        {% endif %}
+
+        {%- if paginate.pages > 1 -%}
+          {% include 'pagination', paginate: paginate %}
+        {%- endif -%}
+      {% endpaginate %}
+
+    <!-- .sec-history // --></div>
+
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+</main>

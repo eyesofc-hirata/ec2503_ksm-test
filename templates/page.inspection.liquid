@@ -1,0 +1,515 @@
+<main class="mt-3">
+    {{ 'inspection.css' | asset_url | stylesheet_tag }}
+    <div class="container-fluid px-0 page-content bg-white">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    {% if customer %}
+                    <div class="row mb-5">
+                        <div class="col">
+                            <div class="well text-center">
+                                <p class="lead mb-0">各種サービスをご利用の際は、ユーザー登録が必要です。（ご登録は<a href="/account/register">こちら</a>より）</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col">
+                            <h4>手軽に点検コース （全4コース）</h4>
+                        </div>
+                    </div>
+                    <div class="row mb-5 p-3 cnav">
+                        <div class="col-md-3 mb-3"><a href="#c1" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> ライトコース<img src="{{ 'inspection_dammy.png' | asset_url }}" height="30" width="1"></a></div>
+                        <div class="col-md-3 mb-3"><a href="#c2" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> スタンダードコース<img src="{{ 'inspection_dammy.png' | asset_url }}" height="30" width="1"></a></div>
+                        <div class="col-md-3 mb-3"><a href="#c3" class="btn btn-block btn-outline-secondary btn-outline-blue"><img src="{{ 'inspection_icon_recommend.png' | asset_url }}" height="50" alt="オススメ" style="position:absolute; left:0; margin:-25px 0 0 0;"><i class="fas fa-angle-down"></i> 発電量調査コース</a></div>
+                        <div class="col-md-3 mb-3"><a href="#c4" class="btn btn-block btn-outline-secondary btn-outline-blue"><img src="{{ 'inspection_icon_recommend.png' | asset_url }}" height="50" alt="オススメ" style="position:absolute; left:0; margin:-25px 0 0 0;"><i class="fas fa-angle-down"></i> モジュール点検コース</a></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h4>しっかり点検コース （全3コース）</h4>
+                        </div>
+                    </div>
+                    <div class="row mb-5 p-3 cnav">
+                        <div class="col-md-4 mb-3"><a href="#c5" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> プレミアムコース</a></div>
+                        <div class="col-md-4 mb-3"><a href="#c6" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> エグゼクティブコース</a></div>
+                        <div class="col-md-4 mb-3"><a href="#c7" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> スーパーエグゼクティブコース</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-0 page-content" id="tegaru">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h2 class="text-center">手軽に点検コース</h2>
+                        </div>
+                    </div>
+                    <div class="row mb-1 courses">
+                        {% assign entry = shop.metaobjects.inspection['course1'] %}
+                        {% assign is_corporate = customer and customer.metafields.custom.membership_rank == '法人会員' %}
+                        {% assign product_handle = entry.product_handle %}
+                        {% assign alt_houjin_handle = entry.product_handle | append: '_houjin' %}
+                        {% assign houjin_product = all_products[alt_houjin_handle] %}
+                        {% if is_corporate %}
+                        {% if entry.product_handle_houjin != blank %}
+                            {% assign product_handle = entry.product_handle_houjin %}
+                        {% elsif houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+                            {% assign product_handle = alt_houjin_handle %}
+                        {% endif %}
+                        {% endif %}
+                        {% assign product = all_products[product_handle] %}
+                        {% if entry and product %}
+                        <div class="col course-item" id="c1">
+                            <div class="row course-title type1">
+                                <div class="col text-center">{{ entry.name }}</div>
+                            </div>
+                            <div class="row course-body">
+                                <div class="col">
+                                    <div class="row mb-4 price">
+                                        <div class="col">{{ product.price | money }}.-</div>
+                                    </div>
+                                    <div class="row mb-2 icons">
+                                        <div class="col text-center">
+                                            <span class="title">点検人員</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_staff_01.png' | asset_url }}" class="img-fluid" alt="点検人員 1名"></span>
+                                            <span class="value">1名</span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <span class="title">作業時間</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_time_01.png' | asset_url }}" class="img-fluid" alt="約30分"></span>
+                                            <span class="value">約30分</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4 description">
+                                        <div class="col">{{ entry.comment }}</div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product.url }}"><span class="small">詳しく見る</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <form method="post" action="/cart/add">
+                                                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                                                <input type="submit" class="btn btn-block btn-blue btn-cart" value="注文する">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% assign entry = shop.metaobjects.inspection['course2'] %}
+                        {% assign is_corporate = customer and customer.metafields.custom.membership_rank == '法人会員' %}
+                        {% assign product_handle = entry.product_handle %}
+                        {% assign alt_houjin_handle = entry.product_handle | append: '_houjin' %}
+                        {% assign houjin_product = all_products[alt_houjin_handle] %}
+                        {% if is_corporate %}
+                        {% if entry.product_handle_houjin != blank %}
+                            {% assign product_handle = entry.product_handle_houjin %}
+                        {% elsif houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+                            {% assign product_handle = alt_houjin_handle %}
+                        {% endif %}
+                        {% endif %}
+                        {% assign product = all_products[product_handle] %}
+                        {% if entry and product %}
+                        <div class="col course-item" id="c2">
+                            <div class="row course-title type1">
+                                <div class="col text-center">{{ entry.name }}</div>
+                            </div>
+                            <div class="row course-body">
+                                <div class="col">
+                                    <div class="row mb-4 price">
+                                        <div class="col">{{ product.price | money }}.-</div>
+                                    </div>
+                                    <div class="row mb-2 icons">
+                                        <div class="col text-center">
+                                            <span class="title">点検人員</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_staff_01.png' | asset_url }}" class="img-fluid" alt="点検人員 1名"></span>
+                                            <span class="value">1名</span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <span class="title">作業時間</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_time_02.png' | asset_url }}" class="img-fluid" alt="2時間〜"></span>
+                                            <span class="value">1時間15分程度</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4 description">
+                                        <div class="col">{{ entry.comment }}</div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product.url }}"><span class="small">詳しく見る</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <form method="post" action="/cart/add">
+                                                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                                                <input type="submit" class="btn btn-block btn-blue btn-cart" value="注文する">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% assign entry = shop.metaobjects.inspection['course3'] %}
+                        {% assign is_corporate = customer and customer.metafields.custom.membership_rank == '法人会員' %}
+                        {% assign product_handle = entry.product_handle %}
+                        {% assign alt_houjin_handle = entry.product_handle | append: '_houjin' %}
+                        {% assign houjin_product = all_products[alt_houjin_handle] %}
+                        {% if is_corporate %}
+                        {% if entry.product_handle_houjin != blank %}
+                            {% assign product_handle = entry.product_handle_houjin %}
+                        {% elsif houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+                            {% assign product_handle = alt_houjin_handle %}
+                        {% endif %}
+                        {% endif %}
+                        {% assign product = all_products[product_handle] %}
+                        {% if entry and product %}
+                        <div class="col course-item" id="c3">
+                            <div class="row course-title type2">
+                                <div class="col text-center">
+                                    <img src="{{ 'inspection_icon_recommend.png' | asset_url }}" class="recommend_icon" width="41" height="50" alt="オススメ"> {{ entry.name }}
+                                </div>
+                            </div>
+                            <div class="row course-body">
+                                <div class="col">
+                                    <div class="row mb-4 price">
+                                        <div class="col">{{ product.price | money }}.-</div>
+                                    </div>
+                                    <div class="row mb-2 icons">
+                                        <div class="col text-center">
+                                            <span class="title">点検人員</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_staff_01.png' | asset_url }}" class="img-fluid" alt="点検人員 1名"></span>
+                                            <span class="value">1名</span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <span class="title">作業時間</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_time_03.png' | asset_url }}" class="img-fluid" alt="3時間〜"></span>
+                                            <span class="value">2時間程度</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4 description">
+                                        <div class="col">{{ entry.comment }}</div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product.url }}"><span class="small">詳しく見る</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <form method="post" action="/cart/add">
+                                                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                                                <input type="submit" class="btn btn-block btn-blue btn-cart" value="注文する">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% assign entry = shop.metaobjects.inspection['course4'] %}
+                        {% assign is_corporate = customer and customer.metafields.custom.membership_rank == '法人会員' %}
+                        {% assign product_handle = entry.product_handle %}
+                        {% assign alt_houjin_handle = entry.product_handle | append: '_houjin' %}
+                        {% assign houjin_product = all_products[alt_houjin_handle] %}
+                        {% if is_corporate %}
+                        {% if entry.product_handle_houjin != blank %}
+                            {% assign product_handle = entry.product_handle_houjin %}
+                        {% elsif houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+                            {% assign product_handle = alt_houjin_handle %}
+                        {% endif %}
+                        {% endif %}
+                        {% assign product = all_products[product_handle] %}
+                        {% if entry and product %}
+                        <div class="col course-item" id="c4">
+                            <div class="row course-title type2">
+                                <div class="col text-center">
+                                    <img src="{{ 'inspection_icon_recommend.png' | asset_url }}" class="recommend_icon" width="41" height="50" alt="オススメ"> {{ entry.name }}
+                                </div>
+                            </div>
+                            <div class="row course-body">
+                                <div class="col">
+                                    <div class="row mb-4 price">
+                                        <div class="col">{{ product.price | money }}.-</div>
+                                    </div>
+                                    <div class="row mb-2 icons">
+                                        <div class="col text-center">
+                                            <span class="title">点検人員</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_staff_02.png' | asset_url }}" class="img-fluid" alt="点検人員 2名"></span>
+                                            <span class="value">2名</span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <span class="title">作業時間</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_time_04.png' | asset_url }}" class="img-fluid" alt="3時間程度"></span>
+                                            <span class="value">2時間30分程度</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4 description">
+                                        <div class="col">{{ entry.comment }}</div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product.url }}"><span class="small">詳しく見る</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <form method="post" action="/cart/add">
+                                                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                                                <input type="submit" class="btn btn-block btn-blue btn-cart" value="注文する">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <small>※ 作業時間は、設置場所・設置環境により若干異なります。</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid px-0 page-content bg-white" id="shikkari">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h2 class="text-center">しっかり点検コース</h2>
+                        </div>
+                    </div>
+                    <div class="row mb-1 courses">
+                        {% assign entry = shop.metaobjects.inspection['course5'] %}
+                        {% assign is_corporate = customer and customer.metafields.custom.membership_rank == '法人会員' %}
+                        {% assign product_handle = entry.product_handle %}
+                        {% assign alt_houjin_handle = entry.product_handle | append: '_houjin' %}
+                        {% assign houjin_product = all_products[alt_houjin_handle] %}
+                        {% if is_corporate %}
+                        {% if entry.product_handle_houjin != blank %}
+                            {% assign product_handle = entry.product_handle_houjin %}
+                        {% elsif houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+                            {% assign product_handle = alt_houjin_handle %}
+                        {% endif %}
+                        {% endif %}
+                        {% assign product = all_products[product_handle] %}
+                        {% if entry and product %}
+                        <div class="col course-item" id="c5">
+                            <div class="row course-title typeB">
+                                <div class="col text-center">{{ entry.name }}</div>
+                            </div>
+                            <div class="row course-body">
+                                <div class="col">
+                                    <div class="row mb-4 price">
+                                        <div class="col">{{ product.price | money }}.-</div>
+                                    </div>
+                                    <div class="row mb-4 icons">
+                                        <div class="col text-center">
+                                            <span class="title">点検人員</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_staff_02.png' | asset_url }}" class="img-fluid" alt="点検人員 2名"></span>
+                                            <span class="value">2名</span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <span class="title">作業時間</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_time_05.png' | asset_url }}" class="img-fluid" alt="3時間程度"></span>
+                                            <span class="value">3時間程度</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4 description">
+                                        <div class="col">{{ entry.comment }}</div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product.url }}"><span class="small">詳しく見る</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <form method="post" action="/cart/add">
+                                                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                                                <input type="submit" class="btn btn-block btn-blue btn-cart" value="注文する">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% assign entry = shop.metaobjects.inspection['course6'] %}
+                        {% assign is_corporate = customer and customer.metafields.custom.membership_rank == '法人会員' %}
+                        {% assign product_handle = entry.product_handle %}
+                        {% assign alt_houjin_handle = entry.product_handle | append: '_houjin' %}
+                        {% assign houjin_product = all_products[alt_houjin_handle] %}
+                        {% if is_corporate %}
+                        {% if entry.product_handle_houjin != blank %}
+                            {% assign product_handle = entry.product_handle_houjin %}
+                        {% elsif houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+                            {% assign product_handle = alt_houjin_handle %}
+                        {% endif %}
+                        {% endif %}
+                        {% assign product = all_products[product_handle] %}
+                        {% if entry and product %}
+                        <div class="col course-item" id="c6">
+                            <div class="row course-title typeS">
+                                <div class="col text-center">{{ entry.name }}</div>
+                            </div>
+                            <div class="row course-body">
+                                <div class="col">
+                                    <div class="row mb-4 price">
+                                        <div class="col">{{ product.price | money }}.-</div>
+                                    </div>
+                                    <div class="row mb-4 icons">
+                                        <div class="col text-center">
+                                            <span class="title">点検人員</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_staff_02.png' | asset_url }}" class="img-fluid" alt="点検人員 2名"></span>
+                                            <span class="value">2名</span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <span class="title">作業時間</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_time_06.png' | asset_url }}" class="img-fluid" alt="3時間程度"></span>
+                                            <span class="value">3時間30分程度</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4 description">
+                                        <div class="col">{{ entry.comment }}</div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product.url }}"><span class="small">詳しく見る</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <form method="post" action="/cart/add">
+                                                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                                                <input type="submit" class="btn btn-block btn-blue btn-cart" value="注文する">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% assign entry = shop.metaobjects.inspection['course7'] %}
+                        {% assign is_corporate = customer and customer.metafields.custom.membership_rank == '法人会員' %}
+                        {% assign product_handle = entry.product_handle %}
+                        {% assign alt_houjin_handle = entry.product_handle | append: '_houjin' %}
+                        {% assign houjin_product = all_products[alt_houjin_handle] %}
+                        {% if is_corporate %}
+                        {% if entry.product_handle_houjin != blank %}
+                            {% assign product_handle = entry.product_handle_houjin %}
+                        {% elsif houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+                            {% assign product_handle = alt_houjin_handle %}
+                        {% endif %}
+                        {% endif %}
+                        {% assign product = all_products[product_handle] %}
+                        {% if entry and product %}
+                        <div class="col course-item" id="c7">
+                            <div class="row course-title typeG">
+                                <div class="col text-center">{{ entry.name }}</div>
+                            </div>
+                            <div class="row course-body">
+                                <div class="col">
+                                    <div class="row mb-4 price">
+                                        <div class="col">{{ product.price | money }}.-</div>
+                                    </div>
+                                    <div class="row mb-4 icons">
+                                        <div class="col text-center">
+                                            <span class="title">点検人員</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_staff_02.png' | asset_url }}" class="img-fluid" alt="点検人員 2名"></span>
+                                            <span class="value">2名</span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <span class="title">作業時間</span>
+                                            <span class="icon"><img src="{{ 'inspection_icon_time_07.png' | asset_url }}" class="img-fluid" alt="3時間程度"></span>
+                                            <span class="value">4時間程度</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4 description">
+                                        <div class="col">{{ entry.comment }}</div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product.url }}"><span class="small">詳しく見る</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <form method="post" action="/cart/add">
+                                                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                                                <input type="submit" class="btn btn-block btn-blue btn-cart" value="注文する">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <small>※ 作業時間は、設置場所・設置環境により若干異なります。</small><br>
+                            <small>(注1) ドローンを使った撮影は飛行許可申請の適用地域となりますので、許可地域でない場合は、ご希望に添えない場合があります。</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-0 page-content bg-lightblue" id="compare">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="row my-4">
+                        <div class="col">
+                            <h2 class="text-center">コース別 <br class="d-inline-block d-md-none">点検項目比較表</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-md-6 text-md-center">
+                            それぞれの点検コースでチェックする項目の一覧比較表です。
+                            <a class="btn btn-block btn-outline-secondary btn-outline-blue mt-5" href="https://cdn.shopify.com/s/files/1/0916/1175/8963/files/inspection_compare.pdf?v=1746864841" target="_blank">
+                                <div class="middle">
+                                    <div class="row">
+                                        <div class="col-3 col-md-2">
+                                            <img src="{{ 'inspection_icon_pdf.png' | asset_url }}" class="img-fluid" alt="比較表をダウンロードする">
+                                        </div>
+                                        <div class="col-9 col-md-10 text-left pl-0">
+                                            比較表をダウンロードする<br><small>（PDF形式 / 0.1MB）</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <script>
+        $(window).on('load', function () {
+            $('.course-item .course-title.type1, .course-item .course-title.type2').tile();
+            $('.course-item .icons').tile();
+            $('.course-item .description').tile();
+        });
+    </script>
+</main>

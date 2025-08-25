@@ -1,0 +1,41 @@
+main .button-title {
+  text-align: left;
+}
+main .btn-block img {
+  max-width: 64px;
+  width: 64px;
+  height: auto;
+}
+main .top-message {
+  line-height: 2;
+}
+main .top-message .btn {
+  pointer-events: none;
+}
+
+.page-top main .button-title {
+  text-align: center;
+  font-size: 1.5rem;
+  padding-left: 0 !important;
+}
+.page-top main .page-content .notice {
+  color: #000;
+}
+.page-top main .page-content .notice h2, .page-top main .page-content .notice h3, .page-top main .page-content .notice p {
+  color: inherit;
+  font-size: 1.1rem;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+.page-top main .page-content .notice .underline {
+  text-decoration: underline;
+}
+.page-top main .page-content .notice h2 {
+  color: red;
+  font-size: 1.4rem;
+}
+.page-top main .font-lg {
+  font-size: 1.6rem;
+}
+/*# sourceMappingURL=home.css.map */

@@ -1,0 +1,16 @@
+{% assign entry_key = entry_handle %}
+{% assign entry = shop.metaobjects.inspection[entry_key] %}
+{% assign is_corporate = customer and customer.metafields.custom.membership_rank == '法人会員' %}
+{% assign product_handle = entry.product_handle %}
+{% assign alt_houjin_handle = entry.product_handle | append: '_houjin' %}
+{% assign houjin_product = all_products[alt_houjin_handle] %}
+
+{% if is_corporate %}
+  {% if entry.product_handle_houjin != blank %}
+    {% assign product_handle = entry.product_handle_houjin %}
+  {% elsif houjin_product and houjin_product.metafields.custom.product_type == '法人向け商品' %}
+    {% assign product_handle = alt_houjin_handle %}
+  {% endif %}
+{% endif %}
+
+{% assign product = all_products[product_handle] %}

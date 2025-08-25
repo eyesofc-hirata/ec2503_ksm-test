@@ -1,0 +1,58 @@
+{% assign current_customer_id = customer.id | split: '/' | last %}
+{% assign match_found = false %}
+
+{% for estimate in shop.metaobjects.estimate.values %}
+{% assign customer_gid = estimate.customer_id %}
+{% assign customer_id_from_metaobject = customer_gid | split: '/' | last %}
+{% if customer_id_from_metaobject == current_customer_id %}
+{% assign match_found = true %}
+{% endif %}
+{% endfor %}
+
+{% if match_found %}
+<div class="table-wrap js-tbl-scroll">
+<table class="sec-history__table sec-history__table--estimate">
+    <thead>
+    <tr>
+        <th class="table-hdg table-hdg--order" scope="col">見積日</th>
+        <th class="table-hdg table-hdg--date" scope="col">見積名</th>
+        <th class="table-hdg table-hdg--payment" scope="col">概要</th>
+        <th class="table-hdg table-hdg--confirm" scope="col">見積書</th>
+        <th class="table-hdg table-hdg--total" scope="col">購入</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for estimate in shop.metaobjects.estimate.values %}
+    {% assign customer_gid = estimate.customer_id %}
+    {% assign customer_id_from_metaobject = customer_gid | split: '/' | last %}
+    {% if customer_id_from_metaobject == current_customer_id %}
+        {% assign match_found = true %}
+        <tr>
+            <td class="table-item">{{ estimate.date }}</td>
+            <td class="table-item" scope="row">{{ estimate.title }}</td>
+            <td class="table-item">{{ estimate.summary }}</td>
+            <td class="table-item">
+            {% if estimate.pdf %}
+            <a href="{{ estimate.pdf | file_url }}" target="_blank">ダウンロード</a>
+            {% endif %} 
+            </td>
+            <td class="table-item">
+            {% assign variant_gid = estimate.variant_id %}
+            {% assign variant_id = variant_gid | split: '/' | last %}
+            {% if variant_id %}
+                <a href="/cart/{{ variant_id }}:1">購入する</a>
+            {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<p class="sec-history__more"><button><span>もっと見る</span></button></p>
+{% endif %}
+
+{% unless match_found %}
+<p>あなたに関連する見積もりは現在ありません。</p>
+{% endunless %}

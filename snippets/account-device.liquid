@@ -1,0 +1,42 @@
+{% assign device_show = customer.metafields.custom.device_show %}
+
+{% if device_show == true %}
+    <div class="table-wrap js-tbl-scroll">
+        {% assign device_model = customer.metafields.custom.device_model %}
+        {% assign device_number = customer.metafields.custom.device_number %}
+        {% assign device_capacity = customer.metafields.custom.device_capacity %}
+        {% assign device_power_modal = customer.metafields.custom.device_power_modal %}
+        {% assign device_power_number = customer.metafields.custom.device_power_number %}
+        {% assign device_other = customer.metafields.custom.device_other %}
+        <table class="sec-history__table sec-history__table--info">
+            <tbody>
+            <tr>
+                <th class="table-hdg" scope="col">主要機器 モジュール型式</th>
+                <td class="table-item">{{ device_model }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">主要機器 モジュール枚数</th>
+                <td class="table-item">{{ device_number }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">主要機器 システム容量</th>
+                <td class="table-item">{{ device_capacity }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">主要機器 パワーコンディショナ型式</th>
+                <td class="table-item">{{ device_power_modal }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">主要機器 パワーコンディショナ台数</th>
+                <td class="table-item">{{ device_power_number }}</td>
+            </tr>
+            <tr>
+                <th class="table-hdg" scope="col">その他機器に関する情報</th>
+                <td class="table-item">{{ device_other | newline_to_br }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p>現在、保証書NO.から情報を参照し登録しております。<br>情報が反映されるまでしばらくお待ちください。</p>
+{% endif %}

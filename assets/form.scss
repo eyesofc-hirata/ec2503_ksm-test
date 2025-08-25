@@ -1,0 +1,183 @@
+#page-login,
+#page-reset-password,
+#page-contact,
+#page-register {
+  .form-group {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  textarea.form-control  {
+    height: 150px;
+    margin-bottom: 10px;
+  }
+  
+  #contact_zip01, #customer_zip01 {
+    width: 30%;
+  }
+  #contact_zip02, #customer_zip02 {
+    width: 35%;
+  }
+
+  
+  #zip-search {
+    font-size: 0.9rem;
+  }
+  
+  .zip-search {
+    small {
+      a {
+        display: block;
+        margin: 5px 0 10px;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    #contact_zip01, #customer_zip01 {
+      width: 25%;
+    }
+    #contact_zip02, #customer_zip02 {
+      width: 30%;
+    }
+
+    .zip-search {
+      small {
+        display: block;
+        padding-top: 10px;
+      }
+    }
+  }
+
+  .form-hdg {
+      @media (max-width: 767px) {
+        margin-bottom: 1rem;
+      }
+  }
+
+  .form-content {
+    margin-bottom: 2rem;
+  }
+
+  .form-group .col-form-label + div {
+    padding-top: calc(.375rem + 1px);
+    padding-bottom: calc(.375rem + 1px);
+
+      @media (max-width: 767px) {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+  }
+
+  .form-group {
+      @media (max-width: 767px) {
+        margin-bottom: 0;
+      }
+  }
+
+  #reset-button {
+    font-size: 16px;
+  }
+
+  .register-change {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 500;
+
+    @media (max-width: 767px) {
+      font-size: 16px;
+    }
+
+    label {
+      display: inline-block;
+      padding: 0 25px;
+
+      @media (max-width: 767px) {
+        padding: 0 10px;
+      }
+
+      input {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &[data-scene="input"] {
+    #form-btn-confirm {
+      display: none;
+    }
+    .is-confirm {
+      display: none;
+    }
+    .conf_txt {
+      display: none;
+    }
+  }
+  &[data-scene="confirm"] {
+    #error-message {
+      display: none;
+    }
+    #form-btn-input {
+      display: none;
+    }
+    .is-input,
+    .show-input,
+    .required {
+      display: none;
+    }
+  }
+
+  #error-message {
+    display: none;
+
+    &.is-error {
+      display: block;
+    }
+  }
+
+  .alert {
+    padding: .75em .75em .75em 2em;
+
+    li:not(:last-of-type){
+      margin-bottom: .25em;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 12px;
+    }
+
+    ul {
+      margin-bottom: 0;
+      padding: 0;
+    }
+  }
+
+  .form-regalcheck {
+      @media (max-width: 767px) {
+      font-size: 14px;
+    }
+  }
+}
+
+#page-login {
+  .alert-danger {
+    font-size: 14px;
+
+    @media (max-width: 767px) {
+      font-size: 12px;
+    }
+  }
+}
+
+.is-houjin {
+  #page-register .showtype-personal {
+    display: none;
+  }
+}
+
+.is-personal {
+  #page-register .showtype-houjin {
+    display: none;
+  }
+}

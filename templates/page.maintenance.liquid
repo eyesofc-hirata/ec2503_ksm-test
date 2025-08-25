@@ -1,0 +1,412 @@
+<main class="mt-3">
+    {{ 'maintenance.css' | asset_url | stylesheet_tag }}
+    <style>
+        .product-item .img-fluid {
+            height: initial !important;
+        }
+    </style>
+    <div class="container-fluid px-0 page-content bg-white pb-0">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    {% unless customer %}
+                    <div class="row mb-5">
+                        <div class="col">
+                            <div class="well text-center">
+                                <p class="lead mb-0">各種サービスをご利用の際は、ユーザー登録が必要です。（ご登録は<a href="/account">こちら</a>より）<br>カネカ太陽電池を設置していないお客様はご購入いただけません。</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endunless %}
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-md-10">
+                            <p>点検終了後、機器の交換が必要と診断されたお客様はこちらより対象商品をお選びの上、ご購入のお手続きをお願いいたします。<br>また、点検をご希望されない方でも商品をご購入いただけます。</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="text-md-center mb-3">パワーコンディショナ交換セット 商品一覧</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-md-center mb-4">
+                            ※ こちらの価格には全て交換工事費・古いパワーコンディショナの廃棄費が含まれております。
+                        </div>
+                    </div>
+                    <div class="row mb-5 p-3 cnav">
+                        <div class="col-md mb-3">
+                            <a href="#set1" class="btn btn-block btn-outline-secondary btn-outline-blue px-0">
+                                <div class="row no-gutters justify-content-center">
+                                    <div class="col-auto"><big>&#10102;</big></div>
+                                    <div class="col-auto ml-1" style="margin-top:3px;">既存の設置場所で交換可能な場合</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md mb-3">
+                            <a href="#set2" class="btn btn-block btn-outline-secondary btn-outline-blue px-0">
+                                <div class="row no-gutters justify-content-center">
+                                    <div class="col-auto"><big>&#10103;</big></div>
+                                    <div class="col-auto ml-1" style="margin-top:3px;">同一階での設置場所変更が必要な場合</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md mb-3">
+                            <a href="#set3" class="btn btn-block btn-outline-secondary btn-outline-blue px-0">
+                                <div class="row no-gutters justify-content-center">
+                                    <div class="col-auto"><big>&#10104;</big></div>
+                                    <div class="col-auto ml-1" style="margin-top:3px;">異なる階への移設設置が必要な場合</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <h2 class="text-md-center mb-3">セット内容のご説明</h2>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md">
+                            <h3 class="mb-1">基本セット</h3>既存の設置場所で本体のみ交換する工事または、設置場所を変更する場合のセットになります。
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md">
+                            <h3 class="mb-1">基本セット+カラー表示ユニットセット</h3>交換したパワーコンデショナにカラー表示を追加したい場合
+                        </div>
+                    </div>
+
+                    {% assign is_corporate = false %}
+                    {% if customer %}
+                        {% assign rank = customer.metafields.custom.membership_rank %}
+                        {% if rank == '法人会員' %}
+                            {% assign is_corporate = true %}
+                        {% endif %}
+                    {% endif %}
+
+                    <div class="border">
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="mb-3" id="set1">&#10102; 既存の設置場所で交換可能な場合</h3>
+                            </div>
+                        </div>
+                        <div class="row p-3 products">
+                            {% assign entry = shop.metaobjects.maintenance['a1set'] %}
+                            {% assign product_handle1 = entry.product_handle1 %}
+                            {% assign product_handle2 = entry.product_handle2 %}
+
+                            {% if is_corporate %}
+                                {%- assign handle1_houjin = entry.product_handle1_houjin | default: product_handle1 | append: '_houjin' -%}
+                                {%- assign houjin_product1 = all_products[handle1_houjin] -%}
+                                {% if entry.product_handle1_houjin != blank %}
+                                    {% assign product_handle1 = entry.product_handle1_houjin %}
+                                {% elsif houjin_product1 and houjin_product1.metafields.custom.product_type == '法人向け商品' %}
+                                    {% assign product_handle1 = handle1_houjin %}
+                                {% endif %}
+
+                                {%- assign handle2_houjin = entry.product_handle2_houjin | default: product_handle2 | append: '_houjin' -%}
+                                {%- assign houjin_product2 = all_products[handle2_houjin] -%}
+                                {% if entry.product_handle2_houjin != blank %}
+                                    {% assign product_handle2 = entry.product_handle2_houjin %}
+                                {% elsif houjin_product2 and houjin_product2.metafields.custom.product_type == '法人向け商品' %}
+                                    {% assign product_handle2 = handle2_houjin %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% assign product1 = all_products[product_handle1] %}
+                            {% assign product2 = all_products[product_handle2] %}
+
+                            {% if entry %}
+                            <div class="col-md product-item">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>A1セット</strong>
+                                    </div>
+                                    <div class="product-item-title">基本セット</div>
+                                    <img src="{{ 'maintenance_A.jpg' | asset_url }}" class="img-fluid h-100">
+                                </div>
+                                <div class="mt-2">
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product1.url }}"><span class="small">4.0kw</span></a>
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product2.url }}"><span class="small">5.5kw</span></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            {% assign entry = shop.metaobjects.maintenance['b1set'] %}
+
+                            {% assign product_handle1 = entry.product_handle1 %}
+                            {% assign product_handle2 = entry.product_handle2 %}
+
+                            {% if is_corporate %}
+                            {%- assign handle1_houjin = entry.product_handle1_houjin | default: product_handle1 | append: '_houjin' -%}
+                            {%- assign houjin_product1 = all_products[handle1_houjin] -%}
+                            {% if entry.product_handle1_houjin != blank %}
+                                {% assign product_handle1 = entry.product_handle1_houjin %}
+                            {% elsif houjin_product1 and houjin_product1.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle1 = handle1_houjin %}
+                            {% endif %}
+
+                            {%- assign handle2_houjin = entry.product_handle2_houjin | default: product_handle2 | append: '_houjin' -%}
+                            {%- assign houjin_product2 = all_products[handle2_houjin] -%}
+                            {% if entry.product_handle2_houjin != blank %}
+                                {% assign product_handle2 = entry.product_handle2_houjin %}
+                            {% elsif houjin_product2 and houjin_product2.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle2 = handle2_houjin %}
+                            {% endif %}
+                            {% endif %}
+
+                            {% assign product1 = all_products[product_handle1] %}
+                            {% assign product2 = all_products[product_handle2] %}
+
+                            {% if entry %}
+                            <div class="col-md product-item">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>B1セット</strong>
+                                    </div>
+                                    <div class="product-item-title">基本セット+カラー表示ユニットセット</div>
+                                    <img src="{{ 'maintenance_C.jpg' | asset_url }}" class="img-fluid h-100">
+                                </div>
+                                <div class="mt-2">
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product1.url }}"><span class="small">4.0kw</span></a>
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product2.url }}"><span class="small">5.5kw</span></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid px-0 page-content pt-5 pb-0">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="border">
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="mb-3" id="set2">&#10103; 同一階での設置場所変更が必要な場合</h3>
+                            </div>
+                        </div>
+                        <div class="row p-3 products">
+                            {% assign entry = shop.metaobjects.maintenance['a2set'] %}
+
+                            {% assign product_handle1 = entry.product_handle1 %}
+                            {% assign product_handle2 = entry.product_handle2 %}
+
+                            {% if is_corporate %}
+                            {%- assign handle1_houjin = entry.product_handle1_houjin | default: product_handle1 | append: '_houjin' -%}
+                            {%- assign houjin_product1 = all_products[handle1_houjin] -%}
+                            {% if entry.product_handle1_houjin != blank %}
+                                {% assign product_handle1 = entry.product_handle1_houjin %}
+                            {% elsif houjin_product1 and houjin_product1.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle1 = handle1_houjin %}
+                            {% endif %}
+
+                            {%- assign handle2_houjin = entry.product_handle2_houjin | default: product_handle2 | append: '_houjin' -%}
+                            {%- assign houjin_product2 = all_products[handle2_houjin] -%}
+                            {% if entry.product_handle2_houjin != blank %}
+                                {% assign product_handle2 = entry.product_handle2_houjin %}
+                            {% elsif houjin_product2 and houjin_product2.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle2 = handle2_houjin %}
+                            {% endif %}
+                            {% endif %}
+
+                            {% assign product1 = all_products[product_handle1] %}
+                            {% assign product2 = all_products[product_handle2] %}
+
+                            {% if entry %}
+                            <div class="col-md product-item">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>A2セット</strong>
+                                    </div>
+                                    <div class="product-item-title">基本セット</div>
+                                    <img src="{{ 'maintenance_A.jpg' | asset_url }}" class="img-fluid h-100">
+                                </div>
+                                <div class="mt-2">
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product1.url }}"><span class="small">4.0kw</span></a>
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product2.url }}"><span class="small">5.5kw</span></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% assign entry = shop.metaobjects.maintenance['b2set'] %}
+
+                            {% assign product_handle1 = entry.product_handle1 %}
+                            {% assign product_handle2 = entry.product_handle2 %}
+
+                            {% if is_corporate %}
+                            {%- assign handle1_houjin = entry.product_handle1_houjin | default: product_handle1 | append: '_houjin' -%}
+                            {%- assign houjin_product1 = all_products[handle1_houjin] -%}
+                            {% if entry.product_handle1_houjin != blank %}
+                                {% assign product_handle1 = entry.product_handle1_houjin %}
+                            {% elsif houjin_product1 and houjin_product1.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle1 = handle1_houjin %}
+                            {% endif %}
+
+                            {%- assign handle2_houjin = entry.product_handle2_houjin | default: product_handle2 | append: '_houjin' -%}
+                            {%- assign houjin_product2 = all_products[handle2_houjin] -%}
+                            {% if entry.product_handle2_houjin != blank %}
+                                {% assign product_handle2 = entry.product_handle2_houjin %}
+                            {% elsif houjin_product2 and houjin_product2.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle2 = handle2_houjin %}
+                            {% endif %}
+                            {% endif %}
+
+                            {% assign product1 = all_products[product_handle1] %}
+                            {% assign product2 = all_products[product_handle2] %}
+
+                            {% if entry %}
+                            <div class="col-md product-item">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>B2セット</strong>
+                                    </div>
+                                    <div class="product-item-title">基本セット+カラー表示ユニットセット</div>
+                                    <img src="{{ 'maintenance_C.jpg' | asset_url }}" class="img-fluid h-100">
+                                </div>
+                                <div class="mt-2">
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product1.url }}"><span class="small">4.0kw</span></a>
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product2.url }}"><span class="small">5.5kw</span></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid page-content p-0 pt-5 m-0">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="border">
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="mb-3" id="set3">&#10104; 異なる階への移設設置が必要な場合</h3>
+                            </div>
+                        </div>
+                        <div class="row p-3 products">
+                            {% assign entry = shop.metaobjects.maintenance['a3set'] %}
+
+                            {% assign product_handle1 = entry.product_handle1 %}
+                            {% assign product_handle2 = entry.product_handle2 %}
+
+                            {% if is_corporate %}
+                            {%- assign handle1_houjin = entry.product_handle1_houjin | default: product_handle1 | append: '_houjin' -%}
+                            {%- assign houjin_product1 = all_products[handle1_houjin] -%}
+                            {% if entry.product_handle1_houjin != blank %}
+                                {% assign product_handle1 = entry.product_handle1_houjin %}
+                            {% elsif houjin_product1 and houjin_product1.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle1 = handle1_houjin %}
+                            {% endif %}
+
+                            {%- assign handle2_houjin = entry.product_handle2_houjin | default: product_handle2 | append: '_houjin' -%}
+                            {%- assign houjin_product2 = all_products[handle2_houjin] -%}
+                            {% if entry.product_handle2_houjin != blank %}
+                                {% assign product_handle2 = entry.product_handle2_houjin %}
+                            {% elsif houjin_product2 and houjin_product2.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle2 = handle2_houjin %}
+                            {% endif %}
+                            {% endif %}
+
+                            {% assign product1 = all_products[product_handle1] %}
+                            {% assign product2 = all_products[product_handle2] %}
+
+                            {% if entry %}
+                            <div class="col-md product-item">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>A3セット</strong>
+                                    </div>
+                                    <div class="product-item-title">基本セット</div>
+                                    <img src="{{ 'maintenance_A.jpg' | asset_url }}" class="img-fluid h-100">
+                                </div>
+                                <div class="mt-2">
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product1.url }}"><span class="small">4.0kw</span></a>
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product2.url }}"><span class="small">5.5kw</span></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% assign entry = shop.metaobjects.maintenance['b3set'] %}
+
+                            {% assign product_handle1 = entry.product_handle1 %}
+                            {% assign product_handle2 = entry.product_handle2 %}
+
+                            {% if is_corporate %}
+                            {%- assign handle1_houjin = entry.product_handle1_houjin | default: product_handle1 | append: '_houjin' -%}
+                            {%- assign houjin_product1 = all_products[handle1_houjin] -%}
+                            {% if entry.product_handle1_houjin != blank %}
+                                {% assign product_handle1 = entry.product_handle1_houjin %}
+                            {% elsif houjin_product1 and houjin_product1.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle1 = handle1_houjin %}
+                            {% endif %}
+
+                            {%- assign handle2_houjin = entry.product_handle2_houjin | default: product_handle2 | append: '_houjin' -%}
+                            {%- assign houjin_product2 = all_products[handle2_houjin] -%}
+                            {% if entry.product_handle2_houjin != blank %}
+                                {% assign product_handle2 = entry.product_handle2_houjin %}
+                            {% elsif houjin_product2 and houjin_product2.metafields.custom.product_type == '法人向け商品' %}
+                                {% assign product_handle2 = handle2_houjin %}
+                            {% endif %}
+                            {% endif %}
+
+                            {% assign product1 = all_products[product_handle1] %}
+                            {% assign product2 = all_products[product_handle2] %}
+
+                            {% if entry %}
+                            <div class="col-md product-item">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>B3セット</strong>
+                                    </div>
+                                    <div class="product-item-title">基本セット+カラー表示ユニットセット</div>
+                                    <img src="{{ 'maintenance_C.jpg' | asset_url }}" class="img-fluid h-100">
+                                </div>
+                                <div class="mt-2">
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product1.url }}"><span class="small">4.0kw</span></a>
+                                    <a class="btn btn-block btn-outline-secondary btn-outline-blue" href="{{ product2.url }}"><span class="small">5.5kw</span></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid px-0 page-content mb-5">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            現行の室内向けパワーコンディショナの取扱商品はオムロン社製品のみとなっております。
+                            <div class="row no-gutters small">
+                                <div class="col-auto">
+                                    ※
+                                </div>
+                                <div class="col">
+                                    設置されているパワーコンディショナが他社製品でも、オムロン社製品とお取替え可能です。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('.product-item .card-header').tile(3);
+            $('.product-item .card-body').tile(3);
+            $('.product-item .product-item-title').tile(3);
+            $('.product-item .product-item-desc').tile(3);
+        });
+    </script>
+</main>

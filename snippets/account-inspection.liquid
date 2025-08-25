@@ -1,0 +1,51 @@
+<div class="table-wrap js-tbl-scroll">
+    {% assign inspection_number = customer.metafields.custom.inspection_number %}
+    {% assign inspection_week = customer.metafields.custom.inspection_week %}
+    {% assign inspection_time = customer.metafields.custom.inspection_time %}
+    {% assign inspection_date1 = customer.metafields.custom.inspection_date1 %}
+    {% assign inspection_time1 = customer.metafields.custom.inspection_time1 %}
+    {% assign inspection_date2 = customer.metafields.custom.inspection_date2 %}
+    {% assign inspection_time2 = customer.metafields.custom.inspection_time2 %}
+    {% assign inspection_date3 = customer.metafields.custom.inspection_date3 %}
+    {% assign inspection_time3 = customer.metafields.custom.inspection_time3 %}
+    <table class="sec-history__table sec-history__table--info">
+        <tbody>
+        <tr>
+            <th class="table-hdg" scope="col">DM識別番号</th>
+            <td class="table-item">{{ inspection_number }}</td>
+        </tr>
+        <tr>
+            <th class="table-hdg" scope="col">ご連絡がつきやすい曜日</th>
+            <td class="table-item">{{ inspection_week }}</td>
+        </tr>
+        <tr>
+            <th class="table-hdg" scope="col">ご連絡がつきやすい時間帯</th>
+            <td class="table-item">{{ inspection_time }}</td>
+        </tr>
+        <tr>
+            <th class="table-hdg" scope="col">(第1希望) ご希望日</th>
+            <td class="table-item">{{ inspection_date1 | date: "%Y年%m月%d日" }}</td>
+        </tr>
+        <tr>
+            <th class="table-hdg" scope="col">(第1希望) ご希望時間</th>
+            <td class="table-item">{{ inspection_time1 }}</td>
+        </tr>
+        <tr>
+            <th class="table-hdg" scope="col">(第2希望) ご希望日</th>
+            <td class="table-item">{{ inspection_date2 | date: "%Y年%m月%d日" }}</td>
+        </tr>
+        <tr>
+            <th class="table-hdg" scope="col">(第2希望) ご希望時間</th>
+            <td class="table-item">{{ inspection_time2 }}</td>
+        </tr>
+        <tr>
+            <th class="table-hdg" scope="col">(第3希望) ご希望日</th>
+            <td class="table-item">{{ inspection_date3 | date: "%Y年%m月%d日" }}</td>
+        </tr>
+        <tr>
+            <th class="table-hdg" scope="col">(第3希望) ご希望時間</th>
+            <td class="table-item">{{ inspection_time3 }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

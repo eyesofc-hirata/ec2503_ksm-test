@@ -1,0 +1,217 @@
+{% if template == 'index' %}
+  <div class="container-fluid bg-img-blue" id="page-title">
+    <div class="row no-gutters">
+      <div class="col">
+        <h1>お客様サポート</h1>
+      </div>
+    </div>
+  </div>
+{% else %}
+  {% if template contains 'product' %}
+    {% if product.tags contains '点検' %}
+      <div class="container-fluid bg-img-green" id="page-title">
+        <div class="row no-gutters">
+          <div class="col">
+            <h1>点検のご案内<small>点検のご依頼・点検コースの詳細</small></h1>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="container-fluid bg-img-yellow" id="page-title">
+        <div class="row no-gutters">
+          <div class="col">
+            <h1>商品購入のご案内</h1>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% elsif template contains 'page' %}
+    {% case page.handle %}
+      {% when 'home' %}
+        <div class="container-fluid bg-img-blue" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% when 'check' %}
+        <div class="container-fluid bg-img-purple" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% when 'manual' %}
+        <div class="container-fluid bg-img-orange" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% when 'inspection_guide' %}
+        <div class="container-fluid bg-img-green" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>点検のご案内<small>点検の流れ/点検内容</small></h1>
+            </div>
+          </div>
+        </div>
+      {% when 'inspection' %}
+        <div class="container-fluid bg-img-green" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>点検のご案内<small>点検のご依頼・点検コースの詳細</small></h1>
+            </div>
+          </div>
+        </div>
+      {% when 'maintenance' %}
+        <div class="container-fluid bg-img-yellow" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% when 'warranty' %}
+        <div class="container-fluid bg-img-yellow" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>商品購入のご案内<small>交換セット購入時の保証</small></h1>
+            </div>
+          </div>
+        </div>
+      {% when 'contact' %}
+        <div class="container-fluid bg-img-blue" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% when 'faq' %}
+        <div class="container-fluid bg-img-red" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% when 'houjin' %}
+        <div class="container-fluid bg-img-grey" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% when 'houjin_manual' %}
+        <div class="container-fluid bg-img-grey" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% when 'privacy-policy', 'terms-of-service', 'refund-policy', 'shipping-policy', 'legal-notice' %}
+        <div class="container-fluid bg-img-grey" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="container-fluid bg-img-blue" id="page-title">
+          <div class="row no-gutters">
+            <div class="col">
+              <h1>{{ page_title }}</h1>
+            </div>
+          </div>
+        </div>
+    {% endcase %}
+  {% elsif template == 'cart' %}
+    <div class="container-fluid bg-img-blue" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>ご注文の一覧</h1>
+        </div>
+      </div>
+    </div>
+  {% elsif template contains 'customers/register' %}
+    <div class="container-fluid bg-img-pink" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>ユーザー登録</h1>
+        </div>
+      </div>
+    </div>
+  {% elsif template contains 'customers/login' %}
+    <div class="container-fluid bg-img-pink" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>ユーザーログイン</h1>
+        </div>
+      </div>
+    </div>
+  {% elsif template contains 'customers/reset_password' %}
+    <div class="container-fluid bg-img-pink" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>パスワードリセット</h1>
+        </div>
+      </div>
+    </div>
+  {% elsif template contains 'customers/activate_account' %}
+    <div class="container-fluid bg-img-grey" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>アカウントを有効にする</h1>
+        </div>
+      </div>
+    </div>
+  {% elsif template contains 'customers/account' %}
+    <div class="container-fluid bg-img-grey" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>マイページ</h1>
+        </div>
+      </div>
+    </div>
+  {% elsif template contains 'customers/order' %}
+    <div class="container-fluid bg-img-grey" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>注文履歴</h1>
+        </div>
+      </div>
+    </div>
+  {% elsif template contains 'customers/addresses' %}
+    <div class="container-fluid bg-img-grey" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>住所管理</h1>
+        </div>
+      </div>
+    </div>
+  {% elsif template contains '404' %}
+    <div class="container-fluid bg-img-blue" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>ページがみつかりません。</h1>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <!-- その他のページ -->
+    <div class="container-fluid bg-img-blue" id="page-title">
+      <div class="row no-gutters">
+        <div class="col">
+          <h1>{{ page_title }}</h1>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
