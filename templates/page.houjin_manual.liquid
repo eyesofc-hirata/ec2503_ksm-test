@@ -52,18 +52,354 @@
         {% endcomment %}
         <!-- ▼会員ランク表示 -->
         <div class="container-fluid px-0 page-content bg-white">
-                <div class="row no-gutters">
-                    <div class="col">
-                        <div class="container">
-                            <div class="row mb-5">
-                                <div class="col text-md-center">
-                                    当ページは法人ユーザーの方のみ閲覧可能です。<br>法人ユーザーの方は<a href="/account/login">ログインページ</a>からログインするか、<a href="/account/register?houjin=1">ユーザー登録</a>を行ってください。
+            <div class="row no-gutters">
+                <div class="col">
+                    <div class="container">
+                        <div class="row mb-5">
+                            <div class="col text-md-center">
+                                太陽光発電システムの施工方法について、工事店様向けに説明しています。<br>
+                                はじめにこの施工マニュアルをよくお読みになり、十分にご理解のうえ、正しく安全にご使用ください。<br>
+                                太陽光発電システムの施工に際して記載内容を守ってください。
+                            </div>
+                        </div>
+                        <div class="row mb-5 p-3 cnav">
+                            <div class="col-md-auto mb-3"><a href="#cat_module" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> 太陽電池モジュール</a></div>
+                            <div class="col-md-auto mb-3"><a href="#cat_doc" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> 電力申請資料</a></div>
+                            <div class="col-md-auto mb-3"><a href="#cat_pc" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> パワーコンディショナ</a></div>
+                            <div class="col-md-auto mb-3"><a href="#cat_eig" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down" style="font-size:12px;"></i> <span style="font-size:10px;">エナジーインテリジェントゲートウェイ</span></a></div>
+                            <div class="col-md-auto mb-3"><a href="#cat_chikuden" class="btn btn-block btn-outline-secondary btn-outline-blue"><i class="fas fa-angle-down"></i> 蓄電システム</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row no-gutters">
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="cat_module">太陽電池モジュール</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">瓦一体型太陽電池</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_visola.pdf" target="_blank" class="uncached-link">瓦一体型太陽電池 VISOLA 結晶タイプ <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">化粧スレート瓦専用太陽電池</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_soltilex.pdf" target="_blank" class="uncached-link">化粧スレート瓦専用太陽電池 SoltileX 結晶タイプ <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">据置型太陽電池</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_G-S2.pdf" target="_blank" class="uncached-link">カネカ太陽電池モジュール G-S2シリーズ取扱説明書 <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+                <div class="row no-gutters">
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="cat_doc">電力申請資料</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-auto">
+                                <h4>系統連系申請時のカネカ太陽光図面の見方</h4>
+                                <p class="manual_caps"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_G-S2.pdf" target="_blank" class="uncached-link">連系申請時の情報取得方法（カネカ図面の見方） 25.8.27</a></p>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">オムロン製PCS</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_3782397-4C.pdf" target="_blank" class="uncached-link">
+                                                施工マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_3781901-2C.pdf" target="_blank" class="uncached-link">
+                                                保守マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_3782254-4C.pdf" target="_blank" class="uncached-link">
+                                                簡易施工マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">パナソニック製PCS</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_2856995-0E.pdf" target="_blank" class="uncached-link">
+                                                施工マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_2856993-3D.pdf" target="_blank" class="uncached-link">
+                                                保守マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_2856986-0D.pdf" target="_blank" class="uncached-link">
+                                                簡易施工マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="cat_pc">パワーコンディショナ</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-auto">
+                                <h4>オムロン ソーシアルソリューションズ</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">KPK-A□-KS</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_3782397-4C.pdf" target="_blank" class="uncached-link">
+                                                施工マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_3781901-2C.pdf" target="_blank" class="uncached-link">
+                                                保守マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_3782254-4C.pdf" target="_blank" class="uncached-link">
+                                                簡易施工マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">KPR-A□-KS</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_2856995-0E.pdf" target="_blank" class="uncached-link">
+                                                施工マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_2856993-3D.pdf" target="_blank" class="uncached-link">
+                                                保守マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_2856986-0D.pdf" target="_blank" class="uncached-link">
+                                                簡易施工マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">KP□M2-KS</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_6600807-4A.pdf" target="_blank" class="uncached-link">6600807-4A_施工マニュアル_KP□M2-KS.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_4098818-6A.pdf" target="_blank" class="uncached-link">4098818-6A_簡易施工マニュアル_KP□M2-KS.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_9200957-7C.pdf" target="_blank" class="uncached-link">9200957-7C_保守マニュアル_KP□M2-KS.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_3781667-6A.pdf" target="_blank" class="uncached-link">3781667-6A_標準的な力率値(95%)への対応について.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">KP59R-KS-A</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_9101056-3A.pdf" target="_blank" class="uncached-link">9101056-3A_施工マニュアル_KP59R-KS-A.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_9302513-4A.pdf" target="_blank" class="uncached-link">9302513-4A_簡易施工マニュアル_KP59R-KS-A.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_3781667-6A.pdf" target="_blank" class="uncached-link">3781667-6A_標準的な力率値(95%)への対応について.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_9073985-3A.pdf" target="_blank" class="uncached-link">9073985-3A_保守マニュアル_KP59R-KS-A.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="d-flex">
+                                    <h4>デルタ電子</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">H4.5_230 / H6J_240</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_230_Manual_H_series.pdf" target="_blank" class="uncached-link">Manual_H_series.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="cat_eig">エナジーインテリジェントゲートウェイ</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">KP-MU1P</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_6600902-0D.pdf" target="_blank" class="uncached-link">6600902-0D_施工・保守マニュアル_KP-MU1P-KS.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_6601478-3D.pdf" target="_blank" class="uncached-link">6601478-3D_簡易施工マニュアル_KP-MU1P-KS.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_6601248-9C.pdf" target="_blank" class="uncached-link">6601248-9C_施工・保守補足説明書(出力制御編)_KP-MU1P-KS.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_6601458-9B.pdf" target="_blank" class="uncached-link">6601458-9B_フルオプション構成図_KP-MU1P-KS.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_6601372-8A.pdf" target="_blank" class="uncached-link">6601372-8A_施工チェックリスト_KP-MU1P-KS.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="cat_chikuden">蓄電システム</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">ハイブリッド蓄電システム KP55S4</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_6600654-3D.pdf" target="_blank" class="uncached-link">6600654-3D_施工・保守 補足説明書(出力制御編)_KP-MU.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_9537578-7D.pdf" target="_blank" class="uncached-link">9537578-7D_施工マニュアル_KP55S4.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_4099317-1A.pdf" target="_blank" class="uncached-link">4099317-1A_隠ぺい配線カバー施工マニュアル_KP-BU-WC.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_9073981-0A.pdf" target="_blank" class="uncached-link">9073981-0A_実体配線図_KP55S4.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_9302590-8B.pdf" target="_blank" class="uncached-link">9302590-8B_施工クイックガイド_KP55S4.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_5372423-4C.pdf" target="_blank" class="uncached-link">5372423-4C_保守マニュアル_KP55S4.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">フレキシブル蓄電システム KPAC-A25</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_5371839-0C.pdf" target="_blank" class="uncached-link">5371839-0C_施工マニュアル_KPAC-A25(-S).pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_5371869-2B.pdf" target="_blank" class="uncached-link">5371869-2B_施工クイックガイド_KPAC-A25(-S).pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_4099317-1A.pdf" target="_blank" class="uncached-link">4099317-1A_隠ぺい配線カバー施工マニュアル_KP-BU-WC.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">フレキシブル蓄電システム KPAC-A40</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_5371803-0C.pdf" target="_blank" class="uncached-link">5371803-0C_施工マニュアル_KPAC-A40.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_4099328-7B.pdf" target="_blank" class="uncached-link">4099328-7B_施工クイックガイド_KPAC-A40.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_2840346-6A.pdf" target="_blank" class="uncached-link">2840346-6A_電線管(PF管)接続時のご注意_KP-BU98-B.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                        <li class="list-group-item"><a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_6600899-6A.pdf" target="_blank" class="uncached-link">6600899-6A_開梱・施工マニュアル_KP-BU98-B.pdf <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card shadow-sm">
+                                    <h4 class="card-header mb-0">マルチ蓄電プラットフォーム KPBP-A</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_5647732-7P.pdf" target="_blank" class="uncached-link">
+                                                取扱説明書 <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_5647733-5L.pdf" target="_blank" class="uncached-link">
+                                                施工マニュアル（特定負荷） <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_5647734-3M.pdf" target="_blank" class="uncached-link">
+                                                施工マニュアル（全負荷） <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_5647735-1M.pdf" target="_blank" class="uncached-link">
+                                                保守マニュアル <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_5647736-0H.pdf" target="_blank" class="uncached-link">
+                                                施工の前に <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_5653866-0A.pdf" target="_blank" class="uncached-link">
+                                                施工・保守補足説明書(出力制御編) <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_remote-monitoring-service-account-registration-ver1.01.pdf" target="_blank" class="uncached-link">
+                                                遠隔モニタリングサービスアカウント登録について(販売店様用) <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_remote-monitoring-service-account-registration-ver2.01.pdf" target="_blank" class="uncached-link">
+                                                遠隔モニタリングサービスアカウント登録について(お客様用) <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="https://www.kaneka-solar-marketing.jp/pdf/houjin_manual/houjin_manual_KPBP-A_remote-monitoring-service-operation-manual.pdf" target="_blank" class="uncached-link">
+                                                遠隔モニタリングサービスの操作マニュアルについて <img src="{{ 'common_icon_pdf.png' | asset_url }}" width="12" alt="PDF">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script>
             var d = new Date();
             var uncachedLink = document.querySelectorAll('.uncached-link');
